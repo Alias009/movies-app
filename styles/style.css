@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: rgba(74, 74, 237, 0.142);
+}
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/styles/img/movies.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+#header-section {
+    height: 20vh; 
+}
+#main-container {
+    width: auto;
+    display: grid;
+    gap: 3rem;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: minmax(0,15rem) minmax(0,2) minmax(0,15rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+}
+#aside-years-container {
+    margin: 20px 0 20px 0;
+    padding: 8px;
+}
+/* #aside {
+
+} */
+.aside-years-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(92, 92, 209, 0.492);
+    border-radius: 12px;
+    margin: 16px;
+    padding: 8px;
+    color: azure;
+    cursor: pointer;
+    
+}
+
+#categories-container {
+    margin: 12px;
+
+}
+#categories-container {
+    padding: 20px;
+}
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 12px;
+    margin: 24px;
+    padding: 8px;
+    cursor: pointer;
+    
+}
+#category-comedy{
+    background-color: chocolate;
+}
+#category-action{
+    background-color: rgb(210, 201, 30);
+}
+#category-thriller{
+    background-color: rgb(78, 210, 30);
+}
+#category-romance{
+    background-color: rgb(30, 210, 180);
+}
+#category-documental{
+    background-color: rgb(30, 69, 210);
+}
+#category-kids{
+    background-color: rgb(195, 30, 210);
+}
+#section-container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.movies-container {
+    width: 200px;
+    height: 320px;
+     margin: 4px;
+}
+.movies-container-img {
+    width: 200px;
+    height: 300px;
+    z-index: 5; 
+}
+.movies-container-img-name{
+    background-color: brown;
+    color: bisque;
+    font-weight: bold;
+    padding: 8px;
+}
