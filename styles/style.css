@@ -5,11 +5,13 @@
 }
 html {
     font-size: 62.5%;
+    
 }
 body {
+    width: 100%;
     background-color: rgba(74, 74, 237, 0.142);
 }
-#header{
+header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,32 +19,87 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    width: 100%;
 
+}
+#header-search-form {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: #746792;
+    margin-top: 40px;
+    border-radius: 8px;
+}
+#header-search-input {
+    background-color: transparent;
+    margin: 0 8px;
+    border: none;
+    outline: none;
+    color: white;
+    
+}
+
+#header-search-button {
+    background-color: #746792;
+    margin: 0;
+    border: #746792;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+#header-search-img {
+    width: 24px;
+    height: 24px;
 }
 #header-section {
     height: 20vh; 
 }
 #main-container {
     width: auto;
-    display: grid;
-    gap: 3rem;
-    grid-template-areas: "sidebar main";
-    grid-template-columns: minmax(0,15rem) minmax(0,2) minmax(0,15rem);
+    display: flex;
+    flex-wrap: wrap;
     padding-left: 1rem;
-    padding-right: 1rem;
     
 }
-#aside-years-container {
-    margin: 20px 0 20px 0;
+#section-main-container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#section-container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+#section-container-title {
+    background-color: blue;
+    padding: 16px;
+    margin: 28px;
+}
+.movies-container {
+    width: 200px;
+    height: 320px;
+     margin: 4px;
+}
+.movies-container-img {
+    width: 200px;
+    height: 300px;
+    
+}
+.movies-container-img-name{
+    background-color: brown;
+    color: bisque;
+    font-weight: bold;
     padding: 8px;
 }
-/* #aside {
+#aside-years-container {
+    margin: 20px 40px;
+    padding: 8px;
+}
 
-} */
-.aside-years-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.aside-container-h2 {
+    display: inline-block;
     background-color: rgba(92, 92, 209, 0.492);
     border-radius: 12px;
     margin: 16px;
@@ -51,18 +108,24 @@ body {
     cursor: pointer;
     
 }
-
-#categories-container {
-    margin: 12px;
-
+.year-h2 {
+    padding: 0 12px;
 }
+
+/* #categories-container {
+   
+
+} */
 #categories-container {
     padding: 20px;
+    margin: 12px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .category {
-    display: flex;
+     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     padding: 8px;
     border-radius: 12px;
     margin: 24px;
@@ -85,27 +148,46 @@ body {
 #category-documental{
     background-color: rgb(30, 69, 210);
 }
+#category-fantasy{
+    background-color: rgb(30, 69, 210);
+}
+#category-series{
+    background-color: rgb(30, 69, 210);
+}
 #category-kids{
     background-color: rgb(195, 30, 210);
 }
-#section-container {
-    display: flex;
-    flex-wrap: wrap;
 
-}
-.movies-container {
-    width: 200px;
-    height: 320px;
-     margin: 4px;
-}
-.movies-container-img {
-    width: 200px;
-    height: 300px;
-    z-index: 5; 
-}
-.movies-container-img-name{
+#footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
     background-color: brown;
-    color: bisque;
-    font-weight: bold;
+    margin-top: 20px;
+}
+#footer-navbar-ul {
+    display: flex;  
+       
+}
+.footer-navbar-li {
+    list-style: none;
     padding: 8px;
+    margin: 0 20px;
+    
+}
+.li-title {
+    margin-top: 8px;
+    font-style: italic;
+    font-weight: bold;
+    color: beige;
+}
+.footer-navbar-logo {  
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    #aside {
+        display: flex;
+        }    
 }
