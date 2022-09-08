@@ -10,27 +10,53 @@
 </head>
 <body>
     <header>
-        <nav id="header-section" class="inactive">
+
+        <nav id="header-left">
+            <img src="" alt="logo">
+
+        </nav>
+
+        <nav id="header-right" class="">
         
                 <form id="header-search-form">
-                    <input id="header-search-input" placeholder="Search..." type="text">
-                    
+
+                        <input id="header-search-input" placeholder="Search..." type="text">
                         <button id="header-search-button" type="submit">
                             <img id="header-search-img" src="/styles/img/search-icon-color.png" alt="search">
-                        </button>
-
-                    
+                        </button>                  
                 
-            </form>
-    
-            
+                </form>
+                
         </nav>
+
+        <section class="movie-detail inactive">
+            <div class="movie-detail-close">
+              <img width="12px" src="/styles/img/close_icon.png" alt="close">
+            </div>
+            <img src="/styles/img/starwars.jpg" alt="movie">
+            <div class="movie-info">
+              <p>CATEGORY</p>
+              <p>STARWARS</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam recusandae sit libero rerum aspernatur laboriosam </p>
+              <button class="primary-button see-more-button">
+                See more
+              </button>
+            </div>
+        </section>
+
     </header>
     <main id="main-container">
 
         <section id="section-container">
         
-            <h2 id="section-container-title">LAST TENDENCIES</h2><br>
+            <div id="section-container-title-button">
+
+                <h2 id="section-container-title">TENDENCIES</h2>
+            <button id="section-container-button">See more...</button>
+
+
+            </div>
+            
             <div id="section-main-container">
     
             <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
@@ -41,22 +67,6 @@
             <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
             <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
     
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-    
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-            <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-    
-    
     
             </div>
     
@@ -65,8 +75,9 @@
         </section>
         
 
-<aside id="aside">
-        <div id="aside-years-container">
+<section id="aside">
+
+        <!-- <div id="aside-years-container">
             
         <div class="aside-container-h2">
             <h2 class="year-h2">2022</h2>
@@ -105,8 +116,10 @@
             <h2 class="year-h2">2011</h2>
         </div>
 
-        </div>
-        <section id="categories-container">
+        </div> -->
+
+        <div id="categories-container">
+            <h1 id="categories-title">CATEGORIES</h1><br>
                 <div class="category" id="category-comedy">
                     <h2>COMEDY</h2>
                 </div>
@@ -131,9 +144,22 @@
                 <div class="category" id="category-kids">
                     <h2>KIDS</h2>
                 </div>
-            </section>
+            </div><br>
 
-    </aside>
+            <div id="categories-movies-container">
+    
+                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
+                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
+                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
+                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
+                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
+                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
+                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
+        
+        
+                </div>
+
+        </section>
 
     </main>
     
