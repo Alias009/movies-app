@@ -106,3 +106,7 @@ dist
 # Images
 *.png
 *.jpg
+
+
+# secret api key
+/src/secret.js
