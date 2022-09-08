@@ -9,7 +9,7 @@ html {
 }
 body {
     width: 100%;
-    background-color: rgba(74, 74, 237, 0.142);
+
 }
 
 /* header */
@@ -200,10 +200,6 @@ position: relative;
     padding: 0 12px;
 }
 
-/* #categories-container {
-   
-
-} */
 #categories-container {
     padding: 20px;
     margin: 12px;
@@ -225,28 +221,28 @@ position: relative;
     position: static;
 }
 #category-comedy{
-    background-color: chocolate;
+    background-color: rgb(232, 94, 36);
 }
 #category-action{
-    background-color: rgb(210, 201, 30);
+    background-color: rgb(211, 129, 106);
 }
 #category-thriller{
-    background-color: rgb(78, 210, 30);
+    background-color: rgb(230, 188, 141);
 }
 #category-romance{
-    background-color: rgb(30, 210, 180);
+    background-color: rgb(211, 192, 162);
 }
 #category-documental{
-    background-color: rgb(30, 69, 210);
+    background-color: rgb(236, 227, 219);
 }
 #category-fantasy{
-    background-color: rgb(30, 69, 210);
+    background-color: rgb(214, 170, 48);
 }
 #category-series{
-    background-color: rgb(30, 69, 210);
+    background-color: rgb(216, 220, 99);
 }
 #category-kids{
-    background-color: rgb(195, 30, 210);
+    background-color: rgb(224, 230, 168);
 }
 #categories-movies-container {
     display: flex;
@@ -257,7 +253,7 @@ position: relative;
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: brown;
+    background-color: rgb(186, 96, 96);
     margin-top: 20px;
 }
 #footer-navbar-ul {
