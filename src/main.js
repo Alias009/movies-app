@@ -32,9 +32,14 @@ async function getTrendingMoviesPreview () {
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
             mainContainer.appendChild(movieContainer)
+
+
+        movieImg.addEventListener('click', () => {
+            movieDetailContainer.classList.remove('inactive')
+        })
     });
 }
-getTrendingMoviesPreview();/////////////////////
+//getTrendingMoviesPreview();/////////////////////
 ////////////////////
 
 
@@ -45,19 +50,30 @@ async function getGenresMoviesPreview () {
     console.log(data);
     console.log(allGenres)
     allGenres.forEach(genre => {
-        const categoriesContainer = document.querySelector('#aside .categories-container');
-        const categoriesContainerSection = document.querySelector('#categories-container-section');
+        const categoriesContainer = document.querySelector('#aside .categories-container-h2')
+        const categoriesContainerSection = document.querySelector('#categories-container-section')
 
-        const genreContainer = document.createElement('div');
+        const genreContainer = document.createElement('div')
         genreContainer.classList.add('category')
 
-        const genreH2 = document.createElement('h3');
-        genreH2.innerText = genre.name;
+        const genreH2 = document.createElement('h3')
+        genreH2.innerText = genre.name
 
-            
-            genreContainer.appendChild(genreH2);
+            genreContainer.appendChild(genreH2)
             categoriesContainerSection.appendChild(genreContainer)
             categoriesContainer.appendChild(categoriesContainerSection)
-    });
+
+            ///add function trendPage() to the listener
+            genreH2.addEventListener('click', () => {
+                trendingContainerTitleButton.classList.add('inactive')
+                sectionTrendsContainer.classList.add('inactive')
+            
+                categoriesMoviesContainer.classList.remove('inactive')
+                categoriesContainerH2.classList.add('inactive')
+            
+            })
+        
+            
+    })
 }
-getGenresMoviesPreview();
+
