@@ -1,7 +1,17 @@
+const api = axios.create({
+     baseURL: 'https://api.themoviedb.org/3/',
+     headers: {
+        'Content-Type': 'application/json;charset-8',
+     },
+
+     params: {
+        'api_key': API_KEY,
+     },
+});
+
+
 async function getTrendingMoviesPreview () {
-    const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
-    const data = await  response.json();
-    
+    const { data } = await api(`trending/movie/day`);
     const movies = data.results;
     console.log(data);
     console.log(movies)
@@ -29,14 +39,14 @@ getTrendingMoviesPreview();/////////////////////
 
 
 async function getGenresMoviesPreview () {
-    const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`);
-    const data = await  response.json();
-    
+    const { data } = await api(`genre/movie/list`);
     const allGenres = data.genres;
+
     console.log(data);
     console.log(allGenres)
     allGenres.forEach(genre => {
-        const genreMainContainer = document.querySelector('#aside #categories-container');
+        const categoriesContainer = document.querySelector('#aside .categories-container');
+        const categoriesContainerSection = document.querySelector('#categories-container-section');
 
         const genreContainer = document.createElement('div');
         genreContainer.classList.add('category')
@@ -46,7 +56,8 @@ async function getGenresMoviesPreview () {
 
             
             genreContainer.appendChild(genreH2);
-            genreMainContainer.appendChild(genreContainer)
+            categoriesContainerSection.appendChild(genreContainer)
+            categoriesContainer.appendChild(categoriesContainerSection)
     });
 }
 getGenresMoviesPreview();

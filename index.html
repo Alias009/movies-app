@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/Normalize CSS/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
     <title>Movies app</title>
@@ -12,7 +15,7 @@
     <header>
 
         <nav id="header-left">
-            <img src="" alt="logo">
+            <img id="logo" src="/styles/img/movie-logo.png" alt="logo">
 
         </nav>
 
@@ -31,9 +34,9 @@
 
         <section class="movie-detail inactive">
             <div class="movie-detail-close">
-              <img width="12px" src="/styles/img/close_icon.png" alt="close">
+              <img id="close-img" width="12px" src="/styles/img/close_icon.png" alt="close">
             </div>
-            <img src="/styles/img/starwars.jpg" alt="movie">
+            <img id="movie-detail-img" src="/styles/img/starwars.jpg" alt="movie">
             <div class="movie-info">
               <p>GENRE</p>
               <p>STARWARS</p>
@@ -45,14 +48,15 @@
         </section>
 
     </header>
+
     <main id="main-container">
 
-        <section id="section-container">
+        <section class="section-container">
         
             <div id="section-container-title-button">
 
                 <h2 id="section-container-title">TRENDING</h2>
-            <button id="section-container-button">See more...</button>
+            <button id="section-container-button" class="inactive">See more...</button>
 
 
             </div>
@@ -72,16 +76,30 @@
 
 <section id="aside">
 
-        <div id="categories-container">
-            <h1 id="categories-title">GENRES</h1><br>
+        <div class="categories-container">
+
+            <div id="categories-container-title">
+                <h1 id="categories-title">GENRES</h1>
+            </div><br>
+            <div id="categories-container-section">
+
                 <!-- <div class="category">
                     <h3>COMEDY</h3>
                 </div> -->
                 
+            </div>
+
+                
             </div><br>
 
-            <div id="categories-movies-container">
+            <div class="categories-movies-container">
     
+                <div id="categories-container-title">
+                    <h2 id="categories-title">Action</h2>
+                </div>
+                
+                <div id="categories-container-movies-container-img">
+
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
@@ -90,6 +108,10 @@
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
         
+
+                </div>
+
+                
         
                 </div>
 
@@ -100,14 +122,17 @@
     <footer id="footer">
         <nav id="footer-navbar">
             <ul id="footer-navbar-ul">
-                <li class="footer-navbar-li li-title">FOLLOW US ON:</li>
+                <li class="footer-navbar-li li-title"><span>FOLLOW US ON:</span></li>
                 <li class="footer-navbar-li"><img class="footer-navbar-logo" src="/styles/img/instagram-icon.png" alt="instagram"></li>
                 <li class="footer-navbar-li"><img class="footer-navbar-logo" src="/styles/img/twitter-icon.png" alt="twitter"></li>
                 <li class="footer-navbar-li"><img class="footer-navbar-logo" src="/styles/img/git-hub-icon.png" alt="github"></li>
             </ul>
         </nav>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./src/node.js"></script>
     <script src="./src/secret.js"></script>
     <script src="./src/main.js"></script>
+    <script src="./src/navigation.js"></script>
 </body>
 </html>
