@@ -1,5 +1,5 @@
 async function getTrendingMoviesPreview () {
-    const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
+    const response = await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`);
     const data = await  response.json();
     
     const movies = data.results;
@@ -17,12 +17,13 @@ async function getTrendingMoviesPreview () {
 
         const movieTitle = document.createElement('span');
         movieTitle.classList.add('movies-container-img-name');
-        movieTitle.innerText = movie.title;
+        movieTitle.innerText = movie.name;
 
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
             mainContainer.appendChild(movieContainer)
-    });
+
+        });
 }
 getTrendingMoviesPreview();
 //////
