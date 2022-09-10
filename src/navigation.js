@@ -53,18 +53,19 @@ function homePage ()
  
  function trendPage ()
  {
-    trendingContainerTitleButton.classList.add('inactive')
+    sectionTrendsContainer.classList.remove('inactive');
+    trendingContainerTitleButton.classList.remove('inactive')
     categoriesContainerH2.classList.add('inactive');
-    sectionTrendsContainer.classList.add('inactive');
-    categoriesMoviesContainer.classList.remove('inactive');
+    categoriesMoviesContainer.classList.add('inactive');
     console.log('Trends!!');
  }
  
  
  function searchPage ()
  {
-    categoriesMoviesContainer.classList.add('inactive');
+    categoriesMoviesContainer.classList.remove('inactive');
     sectionTrendsContainer.classList.add('inactive');
+    categoriesContainerH2.classList.add('inactive')
     console.log('Search!!');
  }
  
@@ -75,6 +76,9 @@ function homePage ()
  
  function genresPage ()
  {
+    categoriesContainerH2.classList.remove('inactive')
+    trendingContainerTitleButton.classList.add('inactive')
     sectionTrendsContainer.classList.add('inactive')
+    categoriesMoviesContainer.classList.add('inactive')
     console.log('Genres!!')
  }
