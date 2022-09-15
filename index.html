@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/Normalize CSS/normalize.css">
+    <link rel="stylesheet" href="./styles/Normalize CSS/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
     <title>Movies app</title>
 </head>
@@ -15,7 +15,7 @@
     <header>
 
         <nav id="header-left">
-            <img id="logo" src="/styles/img/movie-logo.png" alt="logo">
+            <img id="logo" src="./styles/img/movie-logo.png" alt="logo">
 
         </nav>
 
@@ -25,7 +25,7 @@
 
                         <input id="header-search-input" placeholder="Search..." type="text">
                         <button id="header-search-button" type="submit">
-                            <img id="header-search-img" src="/styles/img/search-icon-color.png" alt="search">
+                            <img id="header-search-img" src="./styles/img/search-icon-color.png" alt="search">
                         </button>                  
                 
                 </form>
@@ -49,7 +49,7 @@
             </div>
 
             <section class="movie-detail">
-            <div class="movie-detail-close">
+           <!--  <div class="movie-detail-close">
               <img id="close-img" width="12px" src="/styles/img/close_icon.png" alt="close">
             </div>
             <img id="movie-detail-img" src="/styles/img/starwars.jpg" alt="movie">
@@ -60,8 +60,8 @@
               <button class="primary-button see-more-button">
                 See more
               </button>
-            </div>
-        </section>
+            </div> -->
+            </section>
             
             <div id="section-main-container" class="section-main-container">
     
@@ -78,11 +78,12 @@
 
 <section id="aside">
 
-        <div class="categories-container-h2">
+            <div class="categories-container-h3">
 
-            <div id="categories-container-title">
-                <h1 id="categories-title">GENRES</h1>
+            <div class="genres-container-title">
+                <h1 id="genres-title"></h1>
             </div><br>
+            
             <div id="categories-container-section">
 
                 <!-- <div class="category">
@@ -92,24 +93,24 @@
             </div>
 
                 
-            </div><br>
+            </div>
 
             <div class="categories-movies-container">
     
-                <div id="categories-container-title">
-                    <h2 id="categories-title">Action</h2>
+                <div class="categories-container-title">
+                    <!-- <h2 class="categories-title"></h2> -->
                 </div>
                 
-                <div id="categories-container-movies-container-img">
+                <div class="movies-by-trends-container-img">
 
+                <!-- <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
                 <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-                <div class="movies-container"><img class="movies-container-img" src="/styles/img/starwars.jpg" alt="movie"><span class="movies-container-img-name">STAR-WARS</span></div>
-        
+         -->
 
                 </div>
 
@@ -125,12 +126,14 @@
         <nav id="footer-navbar">
             <ul id="footer-navbar-ul">
                 <li class="footer-navbar-li li-title"><span>FOLLOW US ON:</span></li>
-                <li class="footer-navbar-li"><img class="footer-navbar-logo" src="/styles/img/instagram-icon.png" alt="instagram"></li>
-                <li class="footer-navbar-li"><img class="footer-navbar-logo" src="/styles/img/twitter-icon.png" alt="twitter"></li>
-                <li class="footer-navbar-li"><img class="footer-navbar-logo" src="/styles/img/git-hub-icon.png" alt="github"></li>
+                <li class="footer-navbar-li"><img class="footer-navbar-logo" src="./styles/img/instagram-icon.png" alt="instagram"></li>
+                <li class="footer-navbar-li"><img class="footer-navbar-logo" src="./styles/img/twitter-icon.png" alt="twitter"></li>
+                <li class="footer-navbar-li"><img class="footer-navbar-logo" src="./styles/img/git-hub-icon.png" alt="github"></li>
             </ul>
         </nav>
     </footer>
+
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/node.js"></script>
     <script src="./src/secret.js"></script>
