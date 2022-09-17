@@ -3,10 +3,9 @@ seeMoreButton.addEventListener('click', () => {
 })
 
 headerRightButton.addEventListener('click', () => {
-    if(headerRightInput.value != '') {
-        location.hash ='#category='
-    } 
-})
+    location.hash ='#search=' + headerRightInput.value
+    
+}, false)
 
 
 window.addEventListener('DOMContentLoaded', navigator, false);
@@ -21,7 +20,7 @@ headerLeftLogo.addEventListener('click', ()=> {
 function navigator () {
      console.log({ location })
     
-    if(location.hash.startsWith('#trends')) {
+    if(location.hash.startsWith('#trends=')) {
 
         trendPage()
 
@@ -29,15 +28,11 @@ function navigator () {
         
         searchPage()
 
-    } else if (location.hash.startsWith('#movie=')) {
-
-        movieDetailPage()
-    
-    } else if (location.hash.startsWith('#category=')) {
+    }  else if (location.hash.startsWith('#category=')) {
 
         genresPage()
 
-    } else {
+    } else  {
 
         homePage()
     }
@@ -51,17 +46,21 @@ function navigator () {
 function homePage ()
  {
     trendingContainerTitleButton.classList.remove('inactive')
+    seeMoreButton.classList.remove('inactive')
     sectionTrendsContainer.classList.remove('inactive')
     categoriesCOntainerH1.classList.remove('inactive')
     categoriesContainerH3.classList.remove('inactive')
-   // categoriesContainerTitle.classList.add('inactive')
+    categoriesContainerSection.classList.remove('inactive')
     categoriesMoviesContainer.classList.add('inactive')
     movieDetailContainer.classList.add('inactive')
     moviesByCategory.classList.add('inactive')
 
+    trendTitleH1.innerText = 'Trending movies'
     trendsCategoriesH1.innerText = 'GENRES'
-    console.log('Home!!');
 
+
+    console.log('Home!!');
+    
     getTrendingMoviesPreview();
     getGenresMoviesPreview();
 
@@ -72,25 +71,34 @@ function homePage ()
  {
     sectionTrendsContainer.classList.remove('inactive')
     categoriesMoviesContainer.classList.add('inactive')
-    trendTitleH1.innerText = '' || 'ALL TRENDS'
+    trendTitleH1.innerText = '' || 'ALL TRENDS';
+
+
     getAllTrends()
-    //getGenresMoviesPreview()
-    console.log('Trends!!');
+    //console.log('Trends!!');
  }
  
  
  function searchPage ()
  {
-    categoriesMoviesContainer.classList.remove('inactive');
-    sectionTrendsContainer.classList.add('inactive');
+    
+    categoriesContainerTitle.classList.add('inactive')
     categoriesContainerH3.classList.add('inactive')
-    console.log('Search!!');
+    seeMoreButton.classList.add('inactive')
+    categoriesContainerSection.classList.add('inactive')
+
+    // ['#search=', 'value']
+    const [_,query] = location.hash.split('=');
+
+    
+    trendTitleH1.innerText = '' ||  'Results of ' + headerRightInput.value
+    
+    
+    filterByValue(query);
+
+   // console.log('Search!!');
  }
  
- function movieDetailPage () {
-    movieDetailContainer.classList.remove('inactive')
-    console.log('Movie!!');
- } 
  
  function genresPage ()
  {
@@ -98,19 +106,19 @@ function homePage ()
     sectionTrendsContainer.classList.add('inactive')
     movieDetailContainer.classList.add('inactive')
 
-    //categoriesContainerTitle.classList.add('inactive')
+    
     categoriesMoviesContainer.classList.remove('inactive')
     moviesByCategory.classList.remove('inactive')
     categoriesContainerH3.classList.remove('inactive')
 
     
-
+    // ['#search=', 'value']
     const [_,categoryData] = location.hash.split('=');
     const [categoryID, categoryNAME] = categoryData.split('-')
     
     trendsCategoriesH1.innerText = '' || categoryNAME || headerRightInput.value
     
     getGenresMoviesPreview();
-    filterByGenre(categoryID)
-    console.log('Genres!!')
+    filterByGenre(categoryID);
+    //console.log('Genres!!')
  }

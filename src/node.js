@@ -27,7 +27,7 @@ const categoriesContainer = document.querySelector('#aside' );//genreMainCntaine
 const categoriesContainerH3 = document.querySelector('.categories-container-h3');//add inactive
 const categoriesCOntainerH1 = document.querySelector('.genres-container-title')//remove inactive  in home page
 const trendsCategoriesH1 = document.getElementById('genres-title')// title will change when categories
-const categoriesContainerSection = document.querySelector('#categories-container-section')
+const categoriesContainerSection = document.querySelector('.categories-container-section')
 
 const categoriesMoviesContainer = document.querySelector('.categories-movies-container');//add inactive
 const categoriesContainerTitle = document.querySelector('.categories-container-title');

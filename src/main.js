@@ -8,19 +8,52 @@ const api = axios.create({
         'api_key': API_KEY,
      },
 });
+/////////////////////////////////////////////////////////
+
+//////////helper for filterByGenre and filterByValue////////
+function movieDetailAside (movies,container) {
+    container.innerHTML = '';
+
+    movies.forEach(movie => {
+        
+        
+        const movieContainer = document.createElement('div');
+        movieContainer.classList.add('movies-container');
+
+        const movieImg = document.createElement('img');
+        movieImg.classList.add('movies-container-img');
+        movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
 
 
-async function getTrendingMoviesPreview () {
-    const { data } = await api(`trending/movie/day`);
-    const movies = data.results;
-    console.log(data);
-    console.log(movies);
+        const movieTitle = document.createElement('span');
+        movieTitle.classList.add('movies-container-img-name');
+        movieTitle.innerText = movie.title || movie.name || 'Not found';
 
-    sectionTrendsContainer.innerHTML = '';
+            movieContainer.appendChild(movieImg);
+            movieContainer.appendChild(movieTitle);
+            container.appendChild(movieContainer);
 
-//////////////////////////////
+            
+            
+            categoriesMoviesContainer.appendChild(container);
+            categoriesMoviesContainer.appendChild(categoriesContainerTitle);
+            categoriesContainer.appendChild(categoriesMoviesContainer);
 
 
+
+
+        //listener  for  every img that will show the details
+
+            movieImg.addEventListener('click', () =>{ movieDetails(movie.id)})
+
+    
+    })
+
+}
+
+//////// helper for getTrendingMoviesPreview  and getAllTrends//////
+
+function trendsGenerator (movies) {
     movies.forEach(movie => {
         
 
@@ -31,18 +64,28 @@ async function getTrendingMoviesPreview () {
         movieImg.classList.add('movies-container-img');
         movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
 
+    //listener  for  every img that will show the details
+        movieImg.addEventListener('click', () =>{ movieDetails(movie.id)})
+
         const movieTitle = document.createElement('span');
         movieTitle.classList.add('movies-container-img-name');
-        movieTitle.innerText = movie.title;
+        movieTitle.innerText = movie.title || movie.name;
 
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
             mainContainer.appendChild(movieContainer);
 
+    });
 
-        //listener  for  every img that will show the details
 
-        movieImg.addEventListener('click',function () {
+}
+
+////helperfunction creates a container with the details  by movie//
+ async function movieDetails(movieID) {
+    const { data: movie } = await api(`movie/${movieID}`);
+     
+   // console.log(movie)
+
 
             movieDetailContainer.innerHTML = '';
             movieDetailContainer.classList.remove('inactive');
@@ -54,7 +97,7 @@ async function getTrendingMoviesPreview () {
             const imgClose = document.createElement('img');
             imgClose.classList.add('movie-detail-close-icon');
             imgClose.setAttribute('src', './styles/img/close_icon.png');
-            //imgClose.addEventListener('click', homePage)
+            
 
             containerCloseImg.appendChild(imgClose);
             
@@ -62,24 +105,25 @@ async function getTrendingMoviesPreview () {
             const movieImgContainer = document.createElement('img');
             movieImgContainer.setAttribute('src',`https://image.tmdb.org/t/p/w500/${movie.poster_path}`);
             
+            
                
             const movieInfo = document.createElement('div');
             movieInfo.classList.add('movie-info');
             const detailMoviename = document.createElement('p'); 
             const releaseDate = document.createElement('p');
             const overView = document.createElement('p');
-            const SeeMoreButton = document.createElement('button');
-            SeeMoreButton.classList.add('primary-button');
+            const  sourceData = document.createElement('a');            
              
             detailMoviename.innerText = movie.original_title || movie.name; 
             releaseDate.innerText = `Rate: ${movie.vote_average}`;
             overView.innerText = movie.overview;
-            SeeMoreButton.innerText = 'See more...';
+            sourceData.innerText = "More info..."
+            sourceData.href = movie.homepage
 
             movieInfo.appendChild(detailMoviename); 
             movieInfo.appendChild(releaseDate); 
             movieInfo.appendChild(overView); 
-            movieInfo.appendChild(SeeMoreButton); 
+            movieInfo.appendChild(sourceData); 
 
 
             movieDetailContainer.appendChild(containerCloseImg);
@@ -87,22 +131,30 @@ async function getTrendingMoviesPreview () {
             movieDetailContainer.appendChild(movieInfo);   
             sectionContainerOfDetailsAndTrends.appendChild(movieDetailContainer);   
 
-            console.log('Details');
-         })
+            
+ }
 
-    });
+////////////////////////////////////////
 
+async function getTrendingMoviesPreview () {
+    const { data } = await api(`trending/movie/day`);
+    const movies = data.results;
+    //console.log(data);
+    //console.log(movies);
+
+    sectionTrendsContainer.innerHTML = '';
+
+    trendsGenerator(movies)
 
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 async function getGenresMoviesPreview () {
     const { data } = await api(`genre/movie/list`);
     const allGenres = data.genres;
 
-    console.log(data);
-    console.log(allGenres);
+    //console.log(data);
+    //console.log(allGenres);
 
     categoriesContainerSection.innerHTML = '';
 
@@ -117,7 +169,6 @@ async function getGenresMoviesPreview () {
         genreH3.addEventListener('click', () => {
             
             console.log('contact')
-            //moviesByCategory.innerHTML = '';
             categoriesMoviesContainer.innerHTML = '';
             location.hash = `#category=${genre.id}-${genre.name}`;
         });
@@ -126,7 +177,6 @@ async function getGenresMoviesPreview () {
 
             genreContainer.appendChild(genreH3);
             categoriesContainerSection.appendChild(genreContainer);
-           // categoriesContainerSection.appendChild(categoriesContainerTitle)
             categoriesContainerSection.appendChild(moviesByCategory);
             categoriesContainer.appendChild(categoriesContainerH3);
             categoriesContainer.appendChild(categoriesContainerSection);
@@ -134,6 +184,19 @@ async function getGenresMoviesPreview () {
 
             
     });
+}
+
+async function getAllTrends () {
+    const { data } = await api(`trending/movie/week`);
+    const movies = data.results;
+    console.log(data);
+    console.log(movies);
+
+    sectionTrendsContainer.innerHTML = '';
+
+    trendsGenerator(movies)
+
+
 }
 
 
@@ -149,230 +212,27 @@ async function filterByGenre (id) {
     console.log('filters allllll');
 
     
-    
-
-//////////////////////////////
-
-
- moviesByCategory.innerHTML = '';
-
-    movies.forEach(movie => {
-        
-        
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movies-container');
-
-        const movieImg = document.createElement('img');
-        movieImg.classList.add('movies-container-img');
-        movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
-
-        const movieTitle = document.createElement('span');
-        movieTitle.classList.add('movies-container-img-name');
-        movieTitle.innerText = movie.title;
-
-            movieContainer.appendChild(movieImg);
-            movieContainer.appendChild(movieTitle);
-            moviesByCategory.appendChild(movieContainer);
-
-            
-            //categoriesContainerTitle.appendChild(categoriesTitle)
-            categoriesMoviesContainer.appendChild(moviesByCategory);
-            categoriesMoviesContainer.appendChild(categoriesContainerTitle);
-            categoriesContainer.appendChild(categoriesMoviesContainer);
-
-
-
-
-        //listener  for  every img that will show the details
-
-        movieImg.addEventListener('click',function(){
-
-            movieDetailContainer.innerHTML = '';
-            movieDetailContainer.classList.remove('inactive');
-            
-            const containerCloseImg = document.createElement('div');
-
-            containerCloseImg.classList.add('movie-detail-close');
-            containerCloseImg.addEventListener('click',()=> {movieDetailContainer.classList.add('inactive')} );
-               
-            const imgClose = document.createElement('img');
-            imgClose.classList.add('movie-detail-close-icon'); 
-            imgClose.setAttribute('src', './styles/img/close_icon.png');
-            
-            containerCloseImg.appendChild(imgClose);
-            
-                
-            const movieImgContainer = document.createElement('img'); 
-            movieImgContainer.setAttribute('src',`https://image.tmdb.org/t/p/w500/${movie.poster_path}`);
-            
-               
-            const movieInfo = document.createElement('div');
-            movieInfo.classList.add('movie-info');
-            const detailMoviename = document.createElement('p'); 
-            const releaseDate = document.createElement('p');
-            const overView = document.createElement('p');
-            const SeeMoreButton = document.createElement('button');
-            SeeMoreButton.classList.add('primary-button');
-             
-            detailMoviename.innerText = movie.original_title || movie.name;
-            releaseDate.innerText = `Rate: ${movie.vote_average}`;
-            overView.innerText = movie.overview;
-            SeeMoreButton.innerText = 'See more...';
-
-            movieInfo.appendChild(detailMoviename);
-            movieInfo.appendChild(releaseDate);
-            movieInfo.appendChild(overView);
-            movieInfo.appendChild(SeeMoreButton);
-
-
-            movieDetailContainer.appendChild(containerCloseImg);
-            movieDetailContainer.appendChild(movieImgContainer);
-            movieDetailContainer.appendChild(movieInfo);
-
-            console.log('Details by genre');
-            
-            
-            
-
-            
-            
-    });
-
-    });
+    movieDetailAside(movies, moviesByCategory)
 
 
 }
 
 
-async function getAllTrends () {
-    const { data } = await api(`trending/all/week`);
+async function filterByValue (query) {
+    const { data } = await api('search/movie', {
+      params: {
+        query,
+    },
+    });
     const movies = data.results;
     console.log(data);
     console.log(movies);
+    console.log('buscando');
 
-    sectionTrendsContainer.innerHTML = '';
-
-//////////////////////////////
-
-
-    movies.forEach(movie => {
-        
-
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movies-container');
-
-        const movieImg = document.createElement('img');
-        movieImg.classList.add('movies-container-img');
-        movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
-
-        const movieTitle = document.createElement('span');
-        movieTitle.classList.add('movies-container-img-name');
-        movieTitle.innerText = movie.title || movie.name;
-
-            movieContainer.appendChild(movieImg);
-            movieContainer.appendChild(movieTitle);
-            mainContainer.appendChild(movieContainer);
-
-
-        //listener  for  every img that will show the details
-
-        movieImg.addEventListener('click',function () {
-
-            movieDetailContainer.innerHTML = '';
-            movieDetailContainer.classList.remove('inactive');
-            
-            const containerCloseImg = document.createElement('div');
-            containerCloseImg.classList.add('movie-detail-close');
-            containerCloseImg.addEventListener('click',()=> {movieDetailContainer.classList.add('inactive')} );
-               
-            const imgClose = document.createElement('img');
-            imgClose.classList.add('movie-detail-close-icon');
-            imgClose.setAttribute('src', './styles/img/close_icon.png');
-            
-
-            containerCloseImg.appendChild(imgClose);
-            
-                
-            const movieImgContainer = document.createElement('img'); 
-            movieImgContainer.setAttribute('src',`https://image.tmdb.org/t/p/w500/${movie.poster_path}`);
-            
-               
-            const movieInfo = document.createElement('div');
-            movieInfo.classList.add('movie-info');
-            const detailMoviename = document.createElement('p');
-            const type = document.createElement('p'); 
-            const overView = document.createElement('p');
-            const SeeMoreButton = document.createElement('button');
-            SeeMoreButton.classList.add('primary-button');
-             
-            detailMoviename.innerText = movie.original_title || movie.name;
-            type.innerText = movie.media_type;
-            overView.innerText = movie.overview;
-            SeeMoreButton.innerText = 'See more...';
-
-            movieInfo.appendChild(detailMoviename); 
-            movieInfo.appendChild(type);
-            movieInfo.appendChild(overView); 
-            movieInfo.appendChild(SeeMoreButton); 
-
-
-            movieDetailContainer.appendChild(containerCloseImg);
-            movieDetailContainer.appendChild(movieImgContainer);
-            movieDetailContainer.appendChild(movieInfo)    
-            sectionContainerOfDetailsAndTrends.appendChild(movieDetailContainer);    
-
-            console.log('Details');
-         })
-
-    });
-
-
-}
-/////////
-function movieDetailAside (movies,container) {
     
-    container.innerHTML = ''
-            
-    container.classList.remove('inactive')
-            
-            const containerCloseImg = document.createElement('div')
+    movieDetailAside(movies, moviesByCategory)
 
-            containerCloseImg.classList.add('movie-detail-close')
-            containerCloseImg.addEventListener('click',()=> {movieDetailContainer.classList.add('inactive')} )
-               
-            const imgClose = document.createElement('img')
-            imgClose.classList.add('movie-detail-close-icon')  
-            imgClose.setAttribute('src', './styles/img/close_icon.png')
-            
-            containerCloseImg.appendChild(imgClose)
-            
-                
-            const movieImgContainer = document.createElement('img') 
-            movieImgContainer.setAttribute('src',`https://image.tmdb.org/t/p/w300/${movies.poster_path}`)
-            
-               
-            const movieInfo = document.createElement('div') 
-            movieInfo.classList.add('movie-info') 
-            const detailMoviename = document.createElement('p') 
-            const releaseDate = document.createElement('p') 
-            const overView = document.createElement('p')
-            const SeeMoreButton = document.createElement('button')
-            SeeMoreButton.classList.add('primary-button')
-             
-            detailMoviename.innerText = movies.original_title || movie.name
-            releaseDate.innerText = movies.vote_average
-            overView.innerText = movies.overview 
-            SeeMoreButton.innerText = 'See more...'
-
-            movieInfo.appendChild(detailMoviename) 
-            movieInfo.appendChild(releaseDate) 
-            movieInfo.appendChild(overView) 
-            movieInfo.appendChild(SeeMoreButton) 
-
-
-            container.appendChild(containerCloseImg) 
-            container.appendChild(movieImgContainer) 
-            container.appendChild(movieInfo)    
-
-            console.log('Details by genre')
 }
+
+
+
