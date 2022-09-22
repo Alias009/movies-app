@@ -21,6 +21,7 @@ const sectionContainerOfDetailsAndTrends = document.querySelector('.section-cont
 const trendTitleH1 = document.getElementById('section-container-title')
 const seeMoreButton = document.getElementById('section-container-button')
 const sectionTrendsContainer = document.querySelector('.section-main-container');//add inactive when changes to category
+const moviesContainer = document.querySelector('.movies-container');
 const trendingContainerTitleButton = document.querySelector('.section-container-title-button');//add inactive
 
 const categoriesContainer = document.querySelector('#aside' );//genreMainCntainer in main.js
@@ -28,6 +29,7 @@ const categoriesContainerH3 = document.querySelector('.categories-container-h3')
 const categoriesCOntainerH1 = document.querySelector('.genres-container-title')//remove inactive  in home page
 const trendsCategoriesH1 = document.getElementById('genres-title')// title will change when categories
 const categoriesContainerSection = document.querySelector('.categories-container-section')
+const categories = document.querySelector('.category')
 
 const categoriesMoviesContainer = document.querySelector('.categories-movies-container');//add inactive
 const categoriesContainerTitle = document.querySelector('.categories-container-title');
