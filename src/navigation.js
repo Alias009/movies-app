@@ -4,8 +4,9 @@ let infiniteScroll;
 
 seeMoreButton.addEventListener('click', () => {
     location.hash = '#trends=';
-      
     
+    mainContainer.classList.toggle('section-main-container')
+    seeMoreButton.classList.add('inactive');
 });
 
 headerRightButton.addEventListener('click', () => {
@@ -15,6 +16,7 @@ headerRightButton.addEventListener('click', () => {
 
 headerLeftLogo.addEventListener('click', ()=> {
     location.hash = ''
+    mainContainer.classList.toggle('section-main-container')
 });
 
 window.addEventListener('DOMContentLoaded', navigator, false);
@@ -90,7 +92,7 @@ function homePage ()
  
  function trendPage ()
  {
-    seeMoreButton.classList.toggle('inactive');
+    
     sectionTrendsContainer.classList.remove('inactive');
     categoriesCOntainerH1.classList.add('inactive');
     categoriesContainer.classList.add('inactive');
@@ -131,6 +133,7 @@ function homePage ()
     trendingContainerTitleButton.classList.add('inactive');
     sectionTrendsContainer.classList.add('inactive');
     movieDetailContainer.classList.add('inactive');
+    sectionContainerOfDetailsAndTrends.classList.add('inactive');
 
     
     categoriesMoviesContainer.classList.remove('inactive');

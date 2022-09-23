@@ -99,8 +99,14 @@ function trendsGenerator (movies) {
         movieTitle.classList.add('movies-container-img-name');
         movieTitle.innerText = movie.title || movie.name;
 
+        const likeBtn = document.createElement('button');
+        likeBtn.classList.add('like-button');
+        likeBtn. addEventListener('click', () => {
+            likeBtn.classList.toggle('like-button-clicked');
+        });
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
+            movieContainer.appendChild(likeBtn);
             mainContainer.appendChild(movieContainer);
 
             observer.observe(movieImg);
@@ -151,7 +157,7 @@ function trendsGenerator (movies) {
             const  sourceData = document.createElement('a');            
              
             detailMoviename.innerText = movie.original_title || movie.name; 
-            movieScore.innerText = `★ ${movie.vote_average}`;
+            movieScore.innerText = `⭐ ${movie.vote_average}`;
             overView.innerText = movie.overview;
             sourceData.innerText = "More info...";
             sourceData.href = movie.homepage || null;
