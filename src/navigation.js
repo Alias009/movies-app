@@ -73,19 +73,18 @@ function homePage ()
     categoriesCOntainerH1.classList.remove('inactive');
     categoriesContainerH3.classList.remove('inactive');
     categoriesContainerSection.classList.remove('inactive');
-    categoriesMoviesContainer.classList.add('inactive');
+    categoriesMoviesContainer.classList.remove('inactive');
+    favoriteMovies.classList.remove('inactive');
     movieDetailContainer.classList.add('inactive');
     moviesByCategory.classList.add('inactive');
 
     trendTitleH1.innerText = 'Trending movies';
-    trendsCategoriesH1.innerText = 'GENRES';
-
 
     //console.log('Home!!');
     
     getTrendingMoviesPreview();
     getGenresMoviesPreview();
-
+    getFavoritesMovieList();
 
 }
  
@@ -98,6 +97,7 @@ function homePage ()
     categoriesContainer.classList.add('inactive');
     categoriesContainerSection.classList.add('inactive');
     categoriesMoviesContainer.classList.add('inactive');
+    favoriteMovies.classList.add('inactive');
     trendTitleH1.innerText = '' || 'ALL TRENDS';
     
     getAllTrends();
@@ -114,6 +114,7 @@ function homePage ()
     categoriesContainerH3.classList.add('inactive');
     seeMoreButton.classList.add('inactive');
     categoriesContainerSection.classList.add('inactive');
+    favoriteMovies.classList.add('inactive');
 
     // ['#search=', 'value']
     const [_,query] = location.hash.split('=');
@@ -135,7 +136,7 @@ function homePage ()
     movieDetailContainer.classList.add('inactive');
     sectionContainerOfDetailsAndTrends.classList.add('inactive');
 
-    
+    favoriteMovies.classList.add('inactive');
     categoriesMoviesContainer.classList.remove('inactive');
     moviesByCategory.classList.remove('inactive');
     categoriesContainerH3.classList.remove('inactive');
@@ -150,12 +151,12 @@ function homePage ()
     
     getGenresMoviesPreview();
     filterByGenre(categoryID);
-    moviesByCategory.innerHTML = '';
+    //moviesByCategory.innerHTML = '';
     //restart page so every time you change genre pagination starts from 1
     page = 1
     infiniteScroll = () => {
     filterByGenreInfiniteScroll(categoryID);
 } 
-    //console.log('Genres!!');
+    console.log('Genres!!');
     //console.log(page);
  }

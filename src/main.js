@@ -1,4 +1,4 @@
-
+//data
 const api = axios.create({
      baseURL: 'https://api.themoviedb.org/3/',
      headers: {
@@ -9,6 +9,35 @@ const api = axios.create({
         'api_key': API_KEY,
      },
 });
+
+function likedMoviesList () {
+    const item =JSON.parse(localStorage.getItem('liked-movies'));
+    let movies;
+
+    if (item) {
+        movies = item;
+    } else {
+        movies = {};
+    }
+    return movies;
+}
+
+function likeMovie (movie) {
+    //movie.id
+const likedMovies = likedMoviesList();
+
+if (likedMovies[movie.id]) {
+    //if the movie is saved then delete
+    likedMovies[movie.id] = undefined;
+} else {
+    //if the movie is not saved then save the complete object
+    likedMovies[movie.id] = movie;
+}
+    localStorage.setItem('liked-movies', JSON.stringify(likedMovies));
+
+
+    getFavoritesMovieList();
+}
 /////////////////////////////////////////////////////////
 
 //lazyload
@@ -33,7 +62,7 @@ const observer = new IntersectionObserver(function(entries, observer){
 
 
 //////////helper for filterByGenre and filterByValue////////
-function movieDetailAside (movies,container) {
+function movieDetailAside (movies, container) {
 
     movies.forEach(movie => {
         
@@ -45,13 +74,26 @@ function movieDetailAside (movies,container) {
         movieImg.classList.add('movies-container-img');
         movieImg.setAttribute('data-img', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
         movieImg.setAttribute('alt', movie.title);
+        movieImg.addEventListener('click', function() {movieDetails(movie.id);});
+
 
         const movieTitle = document.createElement('span');
         movieTitle.classList.add('movies-container-img-name');
         movieTitle.innerText = movie.title || movie.name || 'Not found';
 
+        const likeBtn = document.createElement('button');
+        likeBtn.classList.add('like-button');
+
+        likedMoviesList()[movie.id] && likeBtn.classList.add('like-button-clicked');
+        likeBtn. addEventListener('click', () => {
+            likeBtn.classList.toggle('like-button-clicked');
+            likeMovie(movie);
+            
+        });
+
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
+           movieContainer.appendChild(likeBtn);
             container.appendChild(movieContainer);
 
             
@@ -69,9 +111,12 @@ function movieDetailAside (movies,container) {
 
         //listener  for  every img that will show the details
 
-            movieImg.addEventListener('click', () =>{ movieDetails(movie.id)});
+            
 
+        
                 observer.observe(movieImg);
+            
+                
                 
     })
     
@@ -80,6 +125,7 @@ function movieDetailAside (movies,container) {
 //////// helper for getTrendingMoviesPreview  and getAllTrends//////
 
 function trendsGenerator (movies) {
+
     movies.forEach(movie => {
     
 
@@ -101,8 +147,12 @@ function trendsGenerator (movies) {
 
         const likeBtn = document.createElement('button');
         likeBtn.classList.add('like-button');
+
+        likedMoviesList()[movie.id] && likeBtn.classList.add('like-button-clicked');
         likeBtn. addEventListener('click', () => {
             likeBtn.classList.toggle('like-button-clicked');
+            likeMovie(movie);
+            
         });
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
@@ -119,7 +169,7 @@ function trendsGenerator (movies) {
 }
 
 ////helperfunction creates a container with the details  by movie//
- async function movieDetails(movieID) {
+async function movieDetails(movieID) {
     const { data: movie } = await api(`movie/${movieID}`);
      
    // console.log(movie)
@@ -198,8 +248,8 @@ async function getGenresMoviesPreview () {
     const { data } = await api(`genre/movie/list`);
     const allGenres = data.genres;
     maxPages = data.total_pages
-    console.log(data);
-    console.log(allGenres);
+    //console.log(data);
+    //console.log(allGenres);
 
     categoriesContainerSection.innerHTML = '';
 
@@ -223,11 +273,8 @@ async function getGenresMoviesPreview () {
             genreContainer.appendChild(genreH3);
             categoriesContainerSection.appendChild(genreContainer);
             categoriesContainerSection.appendChild(moviesByCategory);
-            categoriesContainer.appendChild(categoriesContainerH3);
-            categoriesContainer.appendChild(categoriesContainerSection);
+            categoriesContainerH3.appendChild(categoriesContainerSection);
             
-            
-        
     });
 }
 
@@ -236,12 +283,8 @@ async function getAllTrends () {
     const { data } = await api(`trending/movie/week`);
     const movies = data.results;
     maxPages = data.total_pages;
-    console.log(data);
-    console.log(movies);
-
-
-    
-
+    //console.log(data);
+   // console.log(movies);
 
     sectionTrendsContainer.innerHTML = '';
 
@@ -256,7 +299,7 @@ async function generateMoreMovies(){
     //sectionTrendsContainer.innerHTML = '';
 
     const { clientHeight, scrollTop, scrollHeight } = document.documentElement;
-    const isScrollDown = clientHeight + scrollTop >= scrollHeight -100;
+    const isScrollDown = (clientHeight + scrollTop) >= (scrollHeight);
     const pageLimit = page < maxPages
 
    if (isScrollDown && pageLimit) {
@@ -287,10 +330,10 @@ async function filterByGenre (id) {
     },
     });
     const movies = data.results;
-    maxPages= data.total_pages
-    console.log(data);
-    console.log(movies);
-
+    maxPages = data.total_pages
+    //console.log(data);
+    //console.log(movies);
+    moviesByCategory.innerHTML = '';
     
     movieDetailAside(movies, moviesByCategory);
 
@@ -300,7 +343,7 @@ async function filterByGenre (id) {
 async function filterByGenreInfiniteScroll (id) {
     
     const { clientHeight, scrollTop, scrollHeight } = document.documentElement;
-    const isScrollDown = (clientHeight + scrollTop) >= (scrollHeight -100);
+    const isScrollDown = (clientHeight + scrollTop) >= (scrollHeight);
     const pageLimit = page < maxPages;
 
 if (isScrollDown && pageLimit ) {
@@ -314,9 +357,9 @@ if (isScrollDown && pageLimit ) {
      },
      });
      const movies = data.results;
-     console.log(data);
-     console.log(movies);
-     console.log('filters allllll');
+     //console.log(data);
+     //console.log(movies);
+     console.log('all');
 
      
      movieDetailAside(movies, moviesByCategory);
@@ -336,9 +379,9 @@ async function filterByValue (query) {
     });
     const movies = data.results;
     maxPages = data.total_pages;
-    console.log(data);
-    console.log(movies);
-    console.log('buscando');
+    // console.log(data);
+    // console.log(movies);
+    // console.log('searching');
 
     moviesByCategory.innerHTML = '';
     movieDetailAside(movies, moviesByCategory);
@@ -360,9 +403,9 @@ if (isScrollDown && pageLimit ) {
       },
       });
      const movies = data.results;
-     console.log(data);
-     console.log(movies);
-     console.log('filters allllll');
+     //console.log(data);
+     //console.log(movies);
+     //console.log('filter');
 
      
      movieDetailAside(movies, moviesByCategory);
@@ -372,3 +415,12 @@ if (isScrollDown && pageLimit ) {
 
 }
 
+
+function getFavoritesMovieList () {
+const favoriteList = likedMoviesList();
+const moviesArray = Object.values(favoriteList);
+
+favoriteMoviesContainer.innerHTML = '';
+movieDetailAside(moviesArray, favoriteMoviesContainer)
+//console.log(favoriteList)
+}

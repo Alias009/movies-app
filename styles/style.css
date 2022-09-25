@@ -23,7 +23,7 @@ header {
     background-position: center;
     background-size: cover;
     width: 100%;
-z-index: 5;
+    z-index: 3;
 }
 h1, h2 {
     padding: 16px;
@@ -172,9 +172,9 @@ input::placeholder {
 
     display:inherit;
     
-    margin-top: -100px;
+    margin-top: -320px;
     margin-right: 0;
-    margin-left: 200px;
+    margin-left: 190px;
     position: absolute;
     border: none;
     background-color: #a52a2a;
@@ -203,13 +203,12 @@ input::placeholder {
     background-color: #da4b2a;
     width: 400px;
     height: 100vh;
-    
     position: fixed;
     top: 0;
     right: 0;
     border-radius: 0 0 12px 12px;
     border: 2px solid #e5c334;
-    
+    z-index: 4;
   }
   .movie-detail-close {
     background: transparent;
@@ -272,7 +271,7 @@ input::placeholder {
   }
   
   /* categories */
-  #aside {
+  #categories-main {
     display: grid;
   }
 
@@ -320,6 +319,17 @@ input::placeholder {
 .categories-movies-container {
     display: grid;
 
+}
+.favorite-movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+.favorite-movies-title {
+    display: grid;
+}
+.favorite-movies-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #footer {
