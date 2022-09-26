@@ -20,10 +20,18 @@
         </nav>
 
         <nav id="header-right" class="">
+
+            <!-- <select name="languages" id="lang">
+                <option value="en-EN">English</option>
+                <option value="es-Es">Español</option>
+                <option value="zh-ZH">中文</option>
+                <option value="pt-BR">Português</option>
+                <option value="ru-RU">ру́сский язы́к</option>
+            </select> -->
         
                 <form id="header-search-form">
 
-                        <input id="header-search-input" placeholder="Search..." type="text">
+                        <input id="header-search-input" placeholder="Search..." type="text" autocomplete="off">
                         <button id="header-search-button" type="submit">
                             <img id="header-search-img" src="./styles/img/search-icon-color.png" alt="search">
                         </button>                  
@@ -171,9 +179,9 @@
    
                 </div>
 
-                <div class="favorite-movies">
+                <div class="favorite-movies inactive">
                     <div class="favorite-movies-title">
-                        <h1>FAVORITES</h1>
+                        <h1 id="favorite-movies-h1">FAVORITES</h1>
                     </div>
                     <div class="favorite-movies-container">
                     <!--     

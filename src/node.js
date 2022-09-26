@@ -10,13 +10,14 @@ const headerRightForm = document.querySelector('#header-search-form');
 const headerRightInput = document.querySelector('#header-search-input');
 const headerRightButton = document.querySelector('#header-search-button');
 const headerRightIMG = document.querySelector('#header-search-img');
+const selectLanguage = document.querySelector('#lang');
 
 /* movie detail container */
 const movieDetailContainer = document.querySelector('.movie-detail');//add inactive 
 const movieDetailContainerButton =document.querySelector('.see-more-button');
 
 /* main container */
-const mainContainer = document.querySelector('#main-container #section-main-container');
+const mainContainer = document.querySelector('#main-container');
 const sectionContainerOfDetailsAndTrends = document.querySelector('.section-container');
 const trendTitleH1 = document.getElementById('section-container-title');
 const seeMoreButton = document.getElementById('section-container-button');
@@ -36,4 +37,5 @@ const categoriesContainerTitle = document.querySelector('.categories-container-t
 const categoriesTitle = document.querySelector('.categories-title');
 const moviesByCategory = document.querySelector('.movies-by-trends-container-img');
 const favoriteMovies = document.querySelector('.favorite-movies');
+const favoriteMoviestitle = document.querySelector('.favorite-movies-title');
 const favoriteMoviesContainer = document.querySelector('.favorite-movies-container');

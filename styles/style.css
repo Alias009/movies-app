@@ -85,6 +85,7 @@ input::placeholder {
 .section-container-title-button {
     display: flex;
     align-items: center;
+    width: 100vw;
     
 }
 

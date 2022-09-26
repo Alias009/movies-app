@@ -5,7 +5,7 @@ let infiniteScroll;
 seeMoreButton.addEventListener('click', () => {
     location.hash = '#trends=';
     
-    mainContainer.classList.toggle('section-main-container')
+    mainContainer.classList.toggle('section-main-container');
     seeMoreButton.classList.add('inactive');
 });
 
@@ -15,19 +15,20 @@ headerRightButton.addEventListener('click', () => {
 }, false);
 
 headerLeftLogo.addEventListener('click', ()=> {
-    location.hash = ''
-    mainContainer.classList.toggle('section-main-container')
+    location.hash = '';
+    mainContainer.classList.toggle('section-main-container');
+    document.location.reload(true);
 });
 
-window.addEventListener('DOMContentLoaded', navigator, false);
-window.addEventListener('hashchange', navigator, false);
+window.addEventListener('DOMContentLoaded', navigation, false);
+window.addEventListener('hashchange', navigation, false);
 window.addEventListener('scroll', infiniteScroll, false);
 
 
 
 
 
-function navigator () {
+function navigation () {
     console.log({ location })
 
  if (infiniteScroll) {
@@ -79,6 +80,8 @@ function homePage ()
     moviesByCategory.classList.add('inactive');
 
     trendTitleH1.innerText = 'Trending movies';
+
+   
 
     //console.log('Home!!');
     

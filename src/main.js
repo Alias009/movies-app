@@ -1,4 +1,5 @@
 //data
+
 const api = axios.create({
      baseURL: 'https://api.themoviedb.org/3/',
      headers: {
@@ -7,11 +8,12 @@ const api = axios.create({
 
      params: {
         'api_key': API_KEY,
+        'language' : navigator.language || 'en-EN'
      },
 });
 
 function likedMoviesList () {
-    const item =JSON.parse(localStorage.getItem('liked-movies'));
+    const item = JSON.parse(localStorage.getItem('liked-movies'));
     let movies;
 
     if (item) {
@@ -62,7 +64,7 @@ const observer = new IntersectionObserver(function(entries, observer){
 
 
 //////////helper for filterByGenre and filterByValue////////
-function movieDetailAside (movies, container) {
+function movieDetailAside (movies, container, {lazyLoad = false}) {
 
     movies.forEach(movie => {
         
@@ -72,7 +74,7 @@ function movieDetailAside (movies, container) {
 
         const movieImg = document.createElement('img');
         movieImg.classList.add('movies-container-img');
-        movieImg.setAttribute('data-img', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
+        movieImg.setAttribute(lazyLoad ? 'data-img' : 'src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
         movieImg.setAttribute('alt', movie.title);
         movieImg.addEventListener('click', function() {movieDetails(movie.id);});
 
@@ -114,7 +116,7 @@ function movieDetailAside (movies, container) {
             
 
         
-                observer.observe(movieImg);
+        if(lazyLoad) {observer.observe(movieImg);}
             
                 
                 
@@ -124,7 +126,7 @@ function movieDetailAside (movies, container) {
 
 //////// helper for getTrendingMoviesPreview  and getAllTrends//////
 
-function trendsGenerator (movies) {
+function trendsGenerator (movies, {lazyLoad = false} ={},) {
 
     movies.forEach(movie => {
     
@@ -135,7 +137,7 @@ function trendsGenerator (movies) {
         const movieImg = document.createElement('img');
         movieImg.classList.add('skeleton');
         movieImg.classList.add('movies-container-img');
-        movieImg.setAttribute('data-img', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
+        movieImg.setAttribute( lazyLoad ? 'data-img' : 'src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`);
         movieImg.setAttribute('alt', movie.title);
 
     //listener  for  every img that will show the details
@@ -148,18 +150,17 @@ function trendsGenerator (movies) {
         const likeBtn = document.createElement('button');
         likeBtn.classList.add('like-button');
 
-        likedMoviesList()[movie.id] && likeBtn.classList.add('like-button-clicked');
+        likedMoviesList()[movie.id] && likeBtn.classList.add('like-button-clicked');  
         likeBtn. addEventListener('click', () => {
             likeBtn.classList.toggle('like-button-clicked');
             likeMovie(movie);
-            
         });
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
             movieContainer.appendChild(likeBtn);
-            mainContainer.appendChild(movieContainer);
+            sectionContainerOfDetailsAndTrends.appendChild(movieContainer);
 
-            observer.observe(movieImg);
+           if(lazyLoad) {observer.observe(movieImg);}
 
     });
     
@@ -204,13 +205,14 @@ async function movieDetails(movieID) {
             const detailMoviename = document.createElement('p'); 
             const movieScore = document.createElement('p');
             const overView = document.createElement('p');
-            const  sourceData = document.createElement('a');            
+            const  sourceData = document.createElement('a'); 
+            sourceData.addEventListener('click', ()=>{ alert('You are leaving this site.')})           
              
             detailMoviename.innerText = movie.original_title || movie.name; 
             movieScore.innerText = `⭐ ${movie.vote_average}`;
             overView.innerText = movie.overview;
-            sourceData.innerText = "More info...";
-            sourceData.href = movie.homepage || null;
+            sourceData.innerText = "Movie website";
+            sourceData.href = movie.homepage || false;
 
             movieInfo.appendChild(detailMoviename); 
             movieInfo.appendChild(movieScore); 
@@ -237,7 +239,7 @@ async function getTrendingMoviesPreview () {
 
     sectionTrendsContainer.innerHTML = '';
 
-    trendsGenerator(movies);
+    trendsGenerator(movies, {lazyLoad: false},);
 
 }
 
@@ -288,7 +290,7 @@ async function getAllTrends () {
 
     sectionTrendsContainer.innerHTML = '';
 
-    trendsGenerator(movies);
+    trendsGenerator(movies, {lazyLoad: false},);
 
 
 }
@@ -312,7 +314,7 @@ async function generateMoreMovies(){
         },
     });
         const movies = data.results;
-        trendsGenerator(movies);
+        trendsGenerator(movies, {lazyLoad: false},);
 
 
    }
@@ -335,7 +337,7 @@ async function filterByGenre (id) {
     //console.log(movies);
     moviesByCategory.innerHTML = '';
     
-    movieDetailAside(movies, moviesByCategory);
+    movieDetailAside(movies, moviesByCategory, {lazyLoad: false},);
 
 
 }
@@ -362,7 +364,7 @@ if (isScrollDown && pageLimit ) {
      console.log('all');
 
      
-     movieDetailAside(movies, moviesByCategory);
+     movieDetailAside(movies, moviesByCategory, {lazyLoad: false},);
 
      
 }
@@ -384,7 +386,7 @@ async function filterByValue (query) {
     // console.log('searching');
 
     moviesByCategory.innerHTML = '';
-    movieDetailAside(movies, moviesByCategory);
+    movieDetailAside(movies, moviesByCategory, {lazyLoad: false},);
 
 }
 //get movies by  word paginated
@@ -408,7 +410,7 @@ if (isScrollDown && pageLimit ) {
      //console.log('filter');
 
      
-     movieDetailAside(movies, moviesByCategory);
+     movieDetailAside(movies, moviesByCategory, {lazyLoad: false},);
 
 
 }
@@ -421,6 +423,6 @@ const favoriteList = likedMoviesList();
 const moviesArray = Object.values(favoriteList);
 
 favoriteMoviesContainer.innerHTML = '';
-movieDetailAside(moviesArray, favoriteMoviesContainer)
+movieDetailAside(moviesArray, favoriteMoviesContainer, {lazyLoad: false},)
 //console.log(favoriteList)
 }
