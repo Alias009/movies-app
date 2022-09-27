@@ -150,15 +150,18 @@ function trendsGenerator (movies, {lazyLoad = false} ={},) {
         const likeBtn = document.createElement('button');
         likeBtn.classList.add('like-button');
 
-        likedMoviesList()[movie.id] && likeBtn.classList.add('like-button-clicked');  
+        likedMoviesList()[movie.id] && likeBtn.classList.add('like-button-clicked');
         likeBtn. addEventListener('click', () => {
             likeBtn.classList.toggle('like-button-clicked');
             likeMovie(movie);
+            favoriteMoviestitle.classList.remove('inactive')
+
         });
             movieContainer.appendChild(movieImg);
             movieContainer.appendChild(movieTitle);
             movieContainer.appendChild(likeBtn);
-            sectionContainerOfDetailsAndTrends.appendChild(movieContainer);
+            sectionTrendsContainer.appendChild(movieContainer);
+            sectionContainerOfDetailsAndTrends.appendChild(sectionTrendsContainer);
 
            if(lazyLoad) {observer.observe(movieImg);}
 
@@ -206,6 +209,7 @@ async function movieDetails(movieID) {
             const movieScore = document.createElement('p');
             const overView = document.createElement('p');
             const  sourceData = document.createElement('a'); 
+            sourceData.classList.add('movie-web-site')
             sourceData.addEventListener('click', ()=>{ alert('You are leaving this site.')})           
              
             detailMoviename.innerText = movie.original_title || movie.name; 
@@ -223,7 +227,7 @@ async function movieDetails(movieID) {
             movieDetailContainer.appendChild(containerCloseImg);
             movieDetailContainer.appendChild(movieImgContainer); 
             movieDetailContainer.appendChild(movieInfo);   
-            sectionContainerOfDetailsAndTrends.appendChild(movieDetailContainer); 
+            mainContainer.appendChild(movieDetailContainer); 
             
             
             
@@ -345,7 +349,7 @@ async function filterByGenre (id) {
 async function filterByGenreInfiniteScroll (id) {
     
     const { clientHeight, scrollTop, scrollHeight } = document.documentElement;
-    const isScrollDown = (clientHeight + scrollTop) >= (scrollHeight);
+    const isScrollDown = (clientHeight + scrollTop) >= (scrollHeight - 100);
     const pageLimit = page < maxPages;
 
 if (isScrollDown && pageLimit ) {
@@ -423,6 +427,7 @@ const favoriteList = likedMoviesList();
 const moviesArray = Object.values(favoriteList);
 
 favoriteMoviesContainer.innerHTML = '';
+
 movieDetailAside(moviesArray, favoriteMoviesContainer, {lazyLoad: false},)
 //console.log(favoriteList)
 }

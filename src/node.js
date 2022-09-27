@@ -21,7 +21,7 @@ const mainContainer = document.querySelector('#main-container');
 const sectionContainerOfDetailsAndTrends = document.querySelector('.section-container');
 const trendTitleH1 = document.getElementById('section-container-title');
 const seeMoreButton = document.getElementById('section-container-button');
-const sectionTrendsContainer = document.querySelector('.section-main-container');//add inactive when changes to category
+const sectionTrendsContainer = document.querySelector('.section-main-container ');//add inactive when changes to category
 const moviesContainer = document.querySelector('.movies-container');
 const trendingContainerTitleButton = document.querySelector('.section-container-title-button');//add inactive
 
@@ -37,5 +37,5 @@ const categoriesContainerTitle = document.querySelector('.categories-container-t
 const categoriesTitle = document.querySelector('.categories-title');
 const moviesByCategory = document.querySelector('.movies-by-trends-container-img');
 const favoriteMovies = document.querySelector('.favorite-movies');
-const favoriteMoviestitle = document.querySelector('.favorite-movies-title');
+const favoriteMoviestitle = document.querySelector('.favorite-movies-h1');
 const favoriteMoviesContainer = document.querySelector('.favorite-movies-container');

@@ -96,6 +96,7 @@ function homePage ()
  {
     
     sectionTrendsContainer.classList.remove('inactive');
+    sectionTrendsContainer.classList.remove('section-main-container');
     categoriesCOntainerH1.classList.add('inactive');
     categoriesContainer.classList.add('inactive');
     categoriesContainerSection.classList.add('inactive');
