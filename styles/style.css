@@ -196,7 +196,7 @@ input::placeholder {
 .movie-detail {
     background-color: #da4b2a;
     width: 400px;
-    height: 100vh;
+    height: 90vh;
     position: fixed;
     top: 0;
     right: 0;
@@ -246,7 +246,7 @@ input::placeholder {
     color: #C7C7C7;
     font-size: 1.4rem;
     height: 100px;
-    overflow: hidden;
+    overflow: scroll;
 
   }
   .movie-web-site {
