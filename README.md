@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# movies-app  [Go to the app](https://jcortes009.github.io/movies-app/)
-=======
 # movies-app  [Wacth it on line](https://alias009.github.io/movies-app/)
 API_REST with JavaScript from TMDB The Movie Data Base
 Using axios  this is a single page app with responsive desing for  devices with a width of 500px. Has a interartive navigation using by changing the location.
