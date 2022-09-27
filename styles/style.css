@@ -95,7 +95,7 @@ input::placeholder {
     border-radius: 8px;
     background-color: transparent;
     border: 2px solid #799a30;
-    margin-left: 300px;
+    margin-left: 30%;
     width: 80px;
     color: #799a30;
     font-size: 1.4rem;
@@ -222,7 +222,7 @@ input::placeholder {
     width: 12px;
   }
   .movie-detail > img:nth-child(2) {
-    width: 400px;
+    width: 100%;
     height: 460px;
     border-radius: 0 0 20px 20px;
     padding: 0;
@@ -245,11 +245,14 @@ input::placeholder {
   .movie-info p:nth-child(3) {
     color: #C7C7C7;
     font-size: 1.4rem;
-    height: 88px;
+    height: 100px;
     overflow: hidden;
-    margin-bottom: 40px;
+
   }
   .movie-web-site {
+    position: absolute;
+    margin-top: -168px;
+    margin-left: 244px;
     text-decoration: none;
     font-size: 1.6rem;
     font-weight: 500;
@@ -389,10 +392,8 @@ input::placeholder {
     
 }
 
-@media (max-width: 500px) {
-    a {
-        position: absolute;
-    }
+@media (max-width: 600px) {
+    
       h1, h2 {
         margin: 28px 28px 28px 16px;
         
@@ -452,6 +453,21 @@ input::placeholder {
       .categories-container-section {
         padding: 4px;
     }
+    .movie-detail {
+        
+        width: 90%;
+        height: auto;
+        
+      }
+      .movie-detail > img:nth-child(2) {
+        width: 100%;
+
+      }
+      .movie-web-site {
+        position: absolute;
+        margin-top: -140px;
+        margin-left: 170px;
+      }
       .skeleton {
         width: 175px;
         
