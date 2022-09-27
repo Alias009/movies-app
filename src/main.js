@@ -209,14 +209,13 @@ async function movieDetails(movieID) {
             const movieScore = document.createElement('p');
             const overView = document.createElement('p');
             const  sourceData = document.createElement('a'); 
-            sourceData.classList.add('movie-web-site')
-            sourceData.addEventListener('click', ()=>{ alert('You are leaving this site.')})           
+            sourceData.classList.add('movie-web-site');          
              
             detailMoviename.innerText = movie.original_title || movie.name; 
             movieScore.innerText = `⭐ ${movie.vote_average}`;
             overView.innerText = movie.overview;
             sourceData.innerText = "Movie website";
-            sourceData.href = movie.homepage || false;
+            sourceData.href = movie.homepage || null;
 
             movieInfo.appendChild(detailMoviename); 
             movieInfo.appendChild(movieScore); 

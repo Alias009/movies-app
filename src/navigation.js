@@ -138,6 +138,7 @@ function homePage ()
     trendingContainerTitleButton.classList.add('inactive');
     sectionTrendsContainer.classList.add('inactive');
     movieDetailContainer.classList.add('inactive');
+    trendingContainerTitleButton.classList.remove('inactive');
     sectionContainerOfDetailsAndTrends.classList.add('inactive');
 
     favoriteMovies.classList.add('inactive');
