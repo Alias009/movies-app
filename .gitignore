@@ -110,4 +110,4 @@ dist
 
 
 # secret api key
-/src/secret.js
+# /src/secret.js
