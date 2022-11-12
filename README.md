@@ -1,4 +1,4 @@
-# movies-app  [Watch it online](https://alias009.github.io/movies-app/)
+# movies-app  [Watch it online](https://jcortes009.github.io/movies-app/)
 API_REST with JavaScript. <br>
 
 Landing page for information about movies from [TMDB](https://www.themoviedb.org/). <br>
