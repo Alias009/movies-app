@@ -1,4 +1,4 @@
-# movies-app  [Go to the app](https://alias009.github.io/movies-app/)
+# movies-app  [Go to the app](https://jcortes009.github.io/movies-app/)
 
 Landing page for information about movies
 
