@@ -1,5 +1,5 @@
 # movies-app  [View Demo](https://jcortes009.github.io/movies-app/)
-JavaScript SPA for information about movies with JavaScript. <br>
+JavaScript SPA for movies information. <br>
 
 Landing page for information about movies from [TMDB](https://www.themoviedb.org/). <br>
 Single page application with with responsive design. Provides interactive navigation effect, it's posible get movies by weekly trends, genre and key words.<br>
