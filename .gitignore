@@ -109,5 +109,5 @@ dist
 *.jpg
 
 
-# secret api key
-# /src/secret.js
+# secret 
+/src/example-secret.js
