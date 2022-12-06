@@ -29,7 +29,7 @@ window.addEventListener('scroll', infiniteScroll, false);
 
 
 function navigation () {
-    console.log({ location })
+    // console.log({ location })
 
  if (infiniteScroll) {
     window.removeEventListener('scroll',infiniteScroll,{ passive: false });
@@ -162,6 +162,6 @@ function homePage ()
     infiniteScroll = () => {
     filterByGenreInfiniteScroll(categoryID);
 } 
-    console.log('Genres!!');
+    // console.log('Genres!!');
     //console.log(page);
  }

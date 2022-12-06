@@ -120,13 +120,13 @@ input::placeholder {
     flex-wrap: wrap;
 
 }
-.section-container,
-.section-main-container-scroll-vertical {
+.section-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
 }
+/* .section-main-container-scroll-vertical{} */
  
 
 .movies-container {

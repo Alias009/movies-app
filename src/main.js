@@ -364,7 +364,7 @@ if (isScrollDown && pageLimit ) {
      const movies = data.results;
      //console.log(data);
      //console.log(movies);
-     console.log('all');
+    //  console.log('all');
 
      
      movieDetailAside(movies, moviesByCategory, {lazyLoad: false},);
