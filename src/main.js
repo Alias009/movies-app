@@ -185,12 +185,13 @@ async function movieDetails(movieID) {
             
             const containerCloseImg = document.createElement('div');
             containerCloseImg.classList.add('movie-detail-close');
-            containerCloseImg.addEventListener('click',()=> {movieDetailContainer.classList.add('inactive')} );
+            // containerCloseImg.addEventListener('click',()=> {movieDetailContainer.classList.add('inactive')} );
                
             const imgClose = document.createElement('img');
             imgClose.classList.add('movie-detail-close-icon');
             imgClose.setAttribute('src', './styles/img/close_icon.png');
             imgClose.setAttribute('alt', 'close');
+            imgClose.addEventListener('click',()=> {movieDetailContainer.classList.add('inactive')} );
 
             containerCloseImg.appendChild(imgClose);
 

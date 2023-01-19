@@ -118,6 +118,7 @@ input::placeholder {
 .section-main-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
 }
 .section-container {
@@ -126,7 +127,11 @@ input::placeholder {
     justify-content: center;
     width: 100%;
 }
-/* .section-main-container-scroll-vertical{} */
+.section-main-container-scroll-horizontal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
  
 
 .movies-container {
@@ -207,21 +212,27 @@ input::placeholder {
     overflow-y: scroll;
   }
   .movie-detail-close {
-    background: transparent;
-    width: 28px;
-    height: 28px;
+    background: linear-gradient(180deg, rgb(61, 59, 59) , transparent);
+    width: 100%;
+    height: 67px;
+    position: absolute;
+   top: 0;
+    z-index: 2;
+    padding: 12px;
+    
+  }
+  /* .movie-detail-close:hover {
+    cursor: pointer;
+  
+  } */
+  .movie-detail-close-icon {
+    width: 12px;
     position: absolute;
     top: 24px;
     left: 24px;
-    z-index: 2;
-    padding: 12px;
-    border-radius: 50%;
   }
-  .movie-detail-close:hover {
+  .movie-detail-close-icon:hover {
     cursor: pointer;
-  }
-  .movie-detail-close-icon {
-    width: 12px;
   }
   .movie-detail > img:nth-child(2) {
     width: 100%;
@@ -414,11 +425,8 @@ input::placeholder {
         overflow-x: scroll;
         overflow-y: hidden;
         width: 100vw;
-    }
-    .section-main-container-scroll-vertical {
         justify-content: flex-start;
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 20px;
     }
   
 

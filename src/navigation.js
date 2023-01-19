@@ -11,8 +11,10 @@ seeMoreButton.addEventListener('click', () => {
 
 headerRightButton.addEventListener('click', () => {
     location.hash ='#search=' + headerRightInput.value
+
+    // searchPage()
     
-}, false);
+});
 
 headerLeftLogo.addEventListener('click', ()=> {
     location.hash = '';
@@ -119,16 +121,17 @@ function homePage ()
     seeMoreButton.classList.add('inactive');
     categoriesContainerSection.classList.add('inactive');
     favoriteMovies.classList.add('inactive');
+    moviesByCategory.classList.remove('inactive')
 
     // ['#search=', 'value']
     const [_,query] = location.hash.split('=');
 
     
-    trendTitleH1.innerText = '' ||  'Results of ' + headerRightInput.value;
+    trendTitleH1.innerText ='Results of ' + headerRightInput.value;
     
     sectionTrendsContainer.innerHTML = '';
-    filterByValue(query);
     infiniteScroll= () => {paginatedResults(query)}
+    filterByValue(query);
    // console.log('Search!!');
  }
  
