@@ -1,0 +1,29 @@
+#footer {
+    background-color: #746792;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 60px;
+}
+#footer-navbar-ul {
+    display: flex;  
+       
+}
+.footer-navbar-li {
+    list-style: none;
+    padding: 8px;
+    margin: 0 20px;
+    
+}
+.li-title {
+    margin-top: 8px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #C7C7C7;
+}
+.footer-navbar-logo {  
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

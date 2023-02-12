@@ -11,6 +11,12 @@ body {
     background-color: #17081b;
     font-family: 'Oswald', sans-serif;
 }
+h1, h2 {
+    padding: 16px;
+    margin: 28px 28px 28px 60px;
+    color: #C7C7C7;
+    font-size: 2.8rem;
+}
 
 /* header */
 header {
@@ -24,12 +30,6 @@ header {
     background-size: cover;
     width: 100%;
     z-index: 3;
-}
-h1, h2 {
-    padding: 16px;
-    margin: 28px 28px 28px 60px;
-    color: #C7C7C7;
-    font-size: 2.8rem;
 }
 #header-right {
 position: relative;
@@ -82,6 +82,9 @@ input::placeholder {
     width: 120px;
     cursor: pointer;
 }
+
+
+
 .section-container-title-button {
     display: flex;
     align-items: center;

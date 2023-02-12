@@ -1,0 +1,64 @@
+header {
+    position: fixed;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    background-image: url('../../img/movies.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+}
+#header-right {
+position: relative;
+}
+input::placeholder {
+    color: whitesmoke;
+    font-weight: lighter;
+}
+#header-search-form {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: #746792;
+    margin: 40px 48px 20px 0;
+    border-radius: 8px;
+    border: 2px solid #746792;
+}
+#header-search-input {
+    background-color: transparent;
+    margin: 0 8px;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+}
+#header-search-form:hover{
+    border: 2px solid white;
+
+}
+
+#header-search-button {
+    background-color: #746792;
+    margin: 0;
+    border: #746792;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+#header-search-img {
+    width: 24px;
+    height: 24px;
+}
+#header-section {
+    height: 20vh; 
+}
+#header-left {
+    position: relative;
+    margin: 20px 0 20px 48px;
+}
+#logo {
+    width: 120px;
+    cursor: pointer;
+}
