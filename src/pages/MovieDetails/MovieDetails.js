@@ -1,5 +1,5 @@
 import React from 'react';
-import { MovieContainer } from '../../components/MovieContainer/MovieContainer';
+
 import './MovieDetails.css';
 
 
@@ -9,10 +9,18 @@ export function MovieDetails() {
     <>
     <section className="section-container">
         
+    <div className='container-image'>
     <h2>Movie title</h2>
-    
 
-    <MovieContainer/>
+      background image
+      </div>
+      <div className='container-details'>
+        <p>details</p>
+      <div> genres</div>
+      </div>
+
+        <div>similar movies</div>
+   
 
 </section>
 

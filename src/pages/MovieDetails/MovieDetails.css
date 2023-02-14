@@ -1,7 +1,21 @@
 .section-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr ;
+    text-align: center;
+    width: 100%; 
+    height: auto;
     margin-top: 100px;
+    color: antiquewhite;
+}
+.container-image {
+  background: url('../../img/starwars.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 700px;  
+  grid-column: 1/ 2;
+}
+.container-details {
+    grid-column: 2 / 3;
 }
