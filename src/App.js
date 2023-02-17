@@ -18,8 +18,9 @@ function App() {
       <Route path='/' element={<HomePage/>}/>
       <Route path='/all-movies' element={<AllMovies/>}/>
       <Route path='/genres' element={<MoviesByGenres/>}/>
-      <Route path='/genres:id' element={<MoviesByGenres/>}/>
-      <Route path='/details' element={<MovieDetails/>}/>
+      <Route path='/genres/:id' element={<MoviesByGenres/>}/>
+      {/* <Route path='/details' element={<MovieDetails/>}/> */}
+      <Route path='/details/:movie' element={<MovieDetails/>}/>
     </Routes>
   </HashRouter>
     

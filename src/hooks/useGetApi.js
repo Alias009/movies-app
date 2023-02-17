@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 const APP_URL = process.env.REACT_APP_URL;
@@ -5,11 +7,16 @@ const APP_KEY = process.env.REACT_APP_API_KEY;
 
 
 
- async function getTrendingMoviesPreview () {
+function useApiPreview (url, key) {
+   const [movies, setMovies ] =useState([]);
     //preview for home page
-     const response = await fetch(`${APP_URL}/discover/movie?api_key=${APP_KEY}`)
-    const data = await response.json();
-    console.log(data)
+    useEffect(async () => {
+       const response = await fetch(`${url}/discover/movie?api_key=${key}`)
+        const data = await response.json();
+      setMovies(data.results)
+      // fetchData()
+    }, [])
+    return movies;
  }
  async function getAllTrendingMovies () {
     //all trends
@@ -35,4 +42,4 @@ const APP_KEY = process.env.REACT_APP_API_KEY;
     const data = await response.json();
     console.log(data)
  }
-export { getTrendingMoviesPreview }
+export { useApiPreview }
