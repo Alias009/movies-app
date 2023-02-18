@@ -1,0 +1,23 @@
+
+.category {
+    background-color: transparent;
+    width: 200px;
+    justify-self: center;
+    padding: 8px;
+    border-radius: 12px;
+    margin: 20px 10px;
+    cursor: pointer;
+    border: 2px solid #da4b2a;
+    height: 48px;
+    color: #da4b2a;
+    font-size: 2.0rem;
+    font-weight: bolder;
+    
+    
+}
+.category:hover {
+    background-color: #da4b2a;
+    border: 2px solid #ded0fd;
+    color: whitesmoke;
+}
+ 

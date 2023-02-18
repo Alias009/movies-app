@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom';
-import { MovieContainer } from '../../components/MovieContainer/MovieContainer'
-import './MoviesByGenre.css';
+// import { MovieContainer } from '../../components/MovieContainer/MovieContainer'
+import './Search.css';
 const APP_URL = process.env.REACT_APP_URL;
 const APP_KEY = process.env.REACT_APP_API_KEY;
-export function MoviesByGenres() {
+export function SeachResults() {
   const location = useLocation();
   console.log(location)
   const genreID = location.state.id;
-  const genreName = location.state.genres;
+  const genreName = location.state;
 
   const [movies, setMovies] = useState([]);
 useEffect(() => {
@@ -17,7 +17,7 @@ useEffect(() => {
         const data = await response.json();
       setMovies(data.results)
     }
-    getMovies()
+    // getMovies()
 }, []);
 console.log(movies)
   return (
@@ -30,7 +30,7 @@ console.log(movies)
                 <div className="movies-by-trends-container-img">
 
          
-                        <MovieContainer movies={movies}/>
+                        {/* <MovieContainer movies={movies}/> */}
                 
    
                 </div>

@@ -19,6 +19,7 @@ const navigate = useNavigate();
       }
     })
     // console.log(movieID);
+    window.scrollTo(0, 0);
    }
    const handleError = (e) => {
     // e.setAttribute('src', NotFound)
@@ -26,7 +27,7 @@ const navigate = useNavigate();
    }
   return (
     <div
-      id="section-main-container"
+      
       className="section-main-container section-main-container-scroll-vertical"
     >
       {movies.filter(movie => movie.poster_path !== null)?.map((movie) => (
@@ -39,7 +40,7 @@ const navigate = useNavigate();
             src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
           alt={movie.title}
           />
-          <span className="movies-container-img-name">
+          <span className="movies-container-name">
             {movie?.title}
           </span>
           <button

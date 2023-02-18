@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MovieContainer } from '../../components/MovieContainer/MovieContainer';
+import { Genres } from '../../components/genres/Genres';
 import './MovieDetails.css';
 
 
@@ -8,23 +9,36 @@ const APP_URL = process.env.REACT_APP_URL;
 const APP_KEY = process.env.REACT_APP_API_KEY;
 export function MovieDetails() {
 const location = useLocation();
-console.log(location.state.movieID, 'location')
+// console.log(location.state.movieID, 'location')
 const id = location?.state.movieID;
-// const id = decodeURI(location.state.movieID)
+
   const [movies, setMovies] = useState([]);
   const [details, setDetails] = useState([]);
+  const [trailer, setTrailer] = useState([]);
 
   useEffect(() => {
     const getInfo = async () => {
         const response = await fetch(`${APP_URL}/movie/${id}?api_key=${APP_KEY}`)
         const data = await response.json();
       setDetails(data)
-      console.log(data)
+      // console.log(data)
+   
+    }
+    getInfo()
+  }, [id]);
+
+  useEffect(() => {
+    const getInfo = async () => {
+        const response = await fetch(`${APP_URL}/movie/${id}/videos?api_key=${APP_KEY}`)
+        const data = await response.json();
+      setTrailer(data.results[0].key)
+      // console.log(data)
+   
     }
     getInfo()
   }, [id])
   
-  console.log(details)
+  console.log(trailer)
 
 
   useEffect(() => {
@@ -38,9 +52,9 @@ const id = location?.state.movieID;
 
   // console.log(movies)
 useEffect(() => {
-  // document.location.reload(true);
+  
 },[])
- console.log(window.location)
+ 
   return (
   
     <section className="section-details">
@@ -65,14 +79,26 @@ useEffect(() => {
                 <br/>
                  {details?.vote_average}
                  </p>
-              <div>{details.genres?.map((items)=> (
-                <p key={items.id}>{items.name}</p>
-              ))}</div>
+              
+                    {details.genres?.map((item) => (
+        <Genres genres={item.name} key={item.id} id={item.id}/>
+      ))}
+               
+              
+              {/* <div>
+              <video width="320" height="240" controls={true}>
+  <source src={`https://www.youtube.com/watch?v=${trailer}`} type="video/mp4" />
+  
+  Your browser does not support the video tag.
+</video>
+            
+            </div> */}
             </div>
+            
             </>
 }
         <div className='section-similar-movies'>
-          <h3>similar movies</h3>
+          <h3>Similar Movies</h3>
         
       <MovieContainer movies={ movies }/>
         </div>

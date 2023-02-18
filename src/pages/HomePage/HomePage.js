@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Footer } from '../../components/Footer/Footer'
-import { Genres } from '../../components/genres/genres';
+import { Genres } from '../../components/genres/Genres';
 import { MovieContainer } from '../../components/MovieContainer/MovieContainer';
 import './HomePage.css';
 const APP_URL = process.env.REACT_APP_URL;
@@ -15,7 +15,7 @@ const [genres, setGenres] = useState([]);
 const [movies, setMovies] = useState([]);
 useEffect(() => {
     const getMovies = async () => {
-        const response = await fetch(`${APP_URL}/discover/movie?api_key=${APP_KEY}`)
+        const response = await fetch(`${APP_URL}/trending/movie/week?api_key=${APP_KEY}`)
         const data = await response.json();
       setMovies(data.results)
     }
@@ -30,18 +30,19 @@ useEffect(() => {
     getGenres()
 }, []);
 
-genres?.map(item => console.log(item))
+// genres?.map(item => console.log(item))
 // console.log(genres.)
 
   return (
     <>
     <section className="section-container">
         
-    <div id="section-container-title-buton" className="section-container-title-button">
+    <div className="section-container-title-button">
 
-        <h2 id="section-container-title">Trending Movies</h2>
-    <button onClick={() =>navigate('/all-movies')}
-    id="section-container-button" >See more...</button>
+        <h2 >Trending Movies</h2>
+    <button className='section-container-button'
+    onClick={() =>navigate('/all-movies')}
+    >Discover more!</button>
 
 
     </div>
@@ -49,13 +50,17 @@ genres?.map(item => console.log(item))
     <MovieContainer movies={movies}/>
     <div className="categories-container-h3">
 
-<div className="genres-container-title">
-    <h2 id="genres-title">GENRES</h2>
+<div className='genres'>
+<div className="genres-title">
+    <h2 >Genres</h2>
 </div>
-
+<div className='genres-name'>
 {genres?.map((item) => (
   <Genres genres={item.name} key={item.id} id={item.id}/>
 ))}
+</div>
+</div>
+
 
 
 

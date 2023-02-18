@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { MoviesByGenres } from './pages/Genres/MoviesByGenres'
 import { AllMovies } from './pages/AllMovies/AllMovies';
 import { MovieDetails } from './pages/MovieDetails/MovieDetails';
+import { SeachResults } from './Search/Search';
 
 
 
@@ -21,6 +22,7 @@ function App() {
       <Route path='/genres/:id' element={<MoviesByGenres/>}/>
       {/* <Route path='/details' element={<MovieDetails/>}/> */}
       <Route path='/details/:movie' element={<MovieDetails/>}/>
+      <Route path='/search/:query' element={<SeachResults/>}/>
     </Routes>
   </HashRouter>
     

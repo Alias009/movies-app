@@ -1,47 +1,32 @@
 
-#categories-main {
-    display: grid;
-  }
 
-.categories-container-h3,
-.categories-movies-container,
 .favorite-movies-title  {
     display: grid;
     
 }
+.genres {
+    display: grid;
 
-.genres-container-title {
+    
+}
+.genres-title {
     padding: 16px 16px 16px 0;
     margin: 28px 28px 28px 0;
+  
 }
-.categories-container-section,
-.movies-by-trends-container-img,
-.favorite-movies-container {
+.genres-name {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+
+}
+.movies-by-trends-container-img {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.category {
-     display: flex;
-    justify-content: center;
-    align-items: center; 
-    padding: 8px;
-    border-radius: 12px;
-    margin: 24px;
-    cursor: pointer;
-    border: 2px solid #da4b2a;
-    height: 30px;
-    color: #da4b2a;
-    
-}
-.category:hover {
-    background-color: #da4b2a;
-    border: 2px solid #ded0fd;
-    color: whitesmoke;
-}
-#categories-title {
-    position: static;
-}
+
 
 .skeleton-container {
     width: 240px;
