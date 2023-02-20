@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { ContextProvider } from './hooks/useContext';
 import { Navbar } from './components/Navbar/Navbar';
 import './App.css';
 import { HomePage } from './pages/HomePage/HomePage';
@@ -14,6 +15,7 @@ function App() {
     
   <>
   <HashRouter>
+   <ContextProvider>
    <Navbar/>
     <Routes>
       <Route path='/' element={<HomePage/>}/>
@@ -24,6 +26,7 @@ function App() {
       <Route path='/details/:movie' element={<MovieDetails/>}/>
       <Route path='/search/:query' element={<SeachResults/>}/>
     </Routes>
+   </ContextProvider>
   </HashRouter>
     
   </>

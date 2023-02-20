@@ -5,8 +5,12 @@ import { Footer } from '../../components/Footer/Footer'
 import { Genres } from '../../components/genres/Genres';
 import { MovieContainer } from '../../components/MovieContainer/MovieContainer';
 import './HomePage.css';
+
+
 const APP_URL = process.env.REACT_APP_URL;
 const APP_KEY = process.env.REACT_APP_API_KEY;
+
+
 export function HomePage() {
 const navigate = useNavigate();
 

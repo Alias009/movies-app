@@ -10,12 +10,13 @@ const [inputValue, setInputValue] = useState('');
 const handleNavigate = () => {
 
   navigate('/');
+  setInputValue('');
 }
-
+const handleChange = (event) => {
+  setInputValue(event.target.value);  
+}
 const handleSubmit = () => {
-
-//  navigate('/search/' + inputValue, { state: { inputValue}})
- console.log(inputValue)
+ navigate('/search/' + inputValue, { state: { inputValue }});
 }
   return (
     <header>
@@ -40,11 +41,19 @@ const handleSubmit = () => {
             <option value="ru-RU">ру́сский язы́к</option>
         </select> --> */}
     
-            <form className="header-search-form">
+            <form 
+            onSubmit={handleSubmit}
+            className="header-search-form">
     
-                    <input onChange={(event) => setInputValue(event.value)}
-                    className="header-search-input" placeholder="Search..." type="text" autoComplete="off"/>
-                    <button onSubmit={handleSubmit}
+                    <input 
+                    onChange={handleChange}
+                    className="header-search-input" 
+                    placeholder="Search..." 
+                    type="text" 
+                    autoComplete="off"
+                    value={inputValue}
+                    />
+                    <button 
                     className="header-search-button" type="submit">
                         <img className="header-search-img" src={SearchBarImg} alt="search"/>
                     </button>                  
