@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NotFound from '../../img/404.png';
+
 import './MovieContainer.css';
 
 
@@ -30,6 +31,7 @@ const navigate = useNavigate();
       
       className="section-main-container section-main-container-scroll-vertical"
     >
+      
       {movies.filter(movie => movie.poster_path !== null)?.map((movie) => (
       
         <div className="movies-container" key={movie?.title}>

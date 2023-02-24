@@ -17,6 +17,7 @@
 .genres-name {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: auto;
     height: auto;
 
@@ -25,47 +26,4 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-
-.skeleton-container {
-    width: 240px;
-    height: 320px;
-     margin:20px 12px;
-     border-top: 8px;
-}
-.skeleton {
-    opacity: 7;
-    animation: skeleton-loading 1s linear infinite alternate;
-    width: 240px;
-    height: 300px;
-    border-radius: 8px;
-}
-.skeleton-title {
-    opacity: 7;
-    animation: skeleton-loading 1s linear infinite alternate;
-    width: 68px;
-    height: 28px;
-    border-radius: 8px;
-
-}
-.skeleton-genre {
-    opacity: 7;
-    animation: skeleton-loading 1s linear infinite alternate;
-    width: 68px;
-    margin: 24px;
-    padding: 8px;
-    height: 28px;
-    border: none;
-    border-radius: 8px;
-
-}
-@keyframes skeleton-loading {
-    0%, 100% {
-        background-color: hsl(199, 20%, 70%);
-    }
-    50% {
-        background-color: hsl(200, 20%, 95%);
-    }
-    
 }

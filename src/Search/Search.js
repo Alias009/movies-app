@@ -9,18 +9,24 @@ const APP_KEY = process.env.REACT_APP_API_KEY;
 export function SeachResults() {
   const location = useLocation();
   const query = location.state?.inputValue;
-  console.log(location.state?.inputValue)
+  // console.log(location.state?.inputValue)
+
+ 
+  const [movies, setMovies] = useState([]);
   
 
-  const [movies, setMovies] = useState([]);
+  const searchMovies = async () => {
+    const response = await fetch(`${APP_URL}/search/movie?api_key=${APP_KEY}&query=${query}&language=${navigator.language}`)
+    const data = await response.json();
+  setMovies(data.results);
+  // console.log(movies, ' results')
+}
+
 useEffect(() => {
-    const searchMovies = async () => {
-        const response = await fetch(`${APP_URL}/search/movie?api_key=${APP_KEY}&query=${query}`)
-        const data = await response.json();
-      setMovies(data.results)
-    }
-    searchMovies()
+    searchMovies();
 }, []);
+
+
 console.log(movies)
   return (
     <>

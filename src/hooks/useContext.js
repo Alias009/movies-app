@@ -10,8 +10,22 @@ function ContextProvider({ children }) {
 
     const navigate = useNavigate();
     const location = useLocation()
-    const [user, setUser] = React.useState();
+    const [pagination, setPagination] = React.useState();
 
+    const lazyLoading = () => {
+        let maxPages = 20;
+        let page = 1
+         let infiniteScroll;
+        const { clientHeight, scrollTop, scrollHeight } = document.documentElement;
+         const isScrollDown = (clientHeight + scrollTop) >= (scrollHeight -100);
+         const pageLimit = page < maxPages
+     
+     if (isScrollDown && pageLimit ) {
+    setPagination(page++)
+    console.log('Lazyy')
+     }
+    
+     }
     
 
     const auth = {navigate, location, APP_URL, APP_KEY};
@@ -25,21 +39,9 @@ function useAuth() {
 const auth = React.useContext(Context);
 return auth;
 }
-const useLazyLoading = () => {
-   let maxPages = 20;
-    let page = 1;
-    let infiniteScroll;
-   const { clientHeight, scrollTop, scrollHeight } = document.documentElement;
-    const isScrollDown = (clientHeight + scrollTop) >= (scrollHeight -100);
-    const pageLimit = page < maxPages
 
-if (isScrollDown && pageLimit ) {
-    return page++;
-}
-}
 export {
     ContextProvider,
-    useLazyLoading,
     useAuth,
 }
 

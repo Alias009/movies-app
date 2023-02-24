@@ -18,7 +18,7 @@ const id = location?.state.movieID;
 
   useEffect(() => {
     const getInfo = async () => {
-        const response = await fetch(`${APP_URL}/movie/${id}?api_key=${APP_KEY}`)
+        const response = await fetch(`${APP_URL}/movie/${id}?api_key=${APP_KEY}&language=${navigator.language}`)
         const data = await response.json();
       setDetails(data)
       // console.log(data)
@@ -29,31 +29,31 @@ const id = location?.state.movieID;
 
   useEffect(() => {
     const getInfo = async () => {
-        const response = await fetch(`${APP_URL}/movie/${id}/videos?api_key=${APP_KEY}`)
+        const response = await fetch(`${APP_URL}/movie/${id}/videos?api_key=${APP_KEY}&language=${navigator.language}`)
         const data = await response.json();
-      setTrailer(data.results[0].key)
+      setTrailer(data?.results[0].key)
       // console.log(data)
    
     }
     getInfo()
   }, [id])
   
-  console.log(trailer)
+  // console.log(trailer)
 
 
   useEffect(() => {
       const getSimilarMovies = async () => {
-          const response = await fetch(`${APP_URL}/movie/${id}/similar?api_key=${APP_KEY}`)
+          const response = await fetch(`${APP_URL}/movie/${id}/similar?api_key=${APP_KEY}&language=${navigator.language}`)
           const data = await response.json();
         setMovies(data?.results)
       }
       getSimilarMovies()
   }, [id])
 
-  // console.log(movies)
-useEffect(() => {
-  
-},[])
+  useEffect(() => {
+    
+  },[])
+  console.log(movies)
  
   return (
   
@@ -62,37 +62,46 @@ useEffect(() => {
     <>
     <div className='movie-detail'>
             <h2>{details?.original_title}</h2>
+            
             <img 
              src={`https://image.tmdb.org/t/p/w300/${details.poster_path}`} alt="movie title" />
           </div>
           <div className='container-details'>
-              <p>{details?.tagline}</p>
-              <p>Release date:
+          <i>{details?.tagline}</i>  
+              <p>
+                <b>Release date:</b>
               <br/>
                 {details?.release_date}
                 </p>
               <p>{details?.overview}</p>
-              <p> Average rate:<br/>
+              <p> 
+                <b>Average rate:</b>
+                <br/>
                 ⭐ {Math.floor(details?.vote_average)}
                 </p>
-              <p>Vote count:
+              <p>
+                <b>Vote count:</b>
                 <br/>
                  {details?.vote_average}
                  </p>
-              
+                 <div>
+                  <h3>Trailer</h3>
+                  <br/>
+                  <iframe
+               width="420" height="320" controls={true}
+src={`https://www.youtube.com/embed/${trailer}`} >
+ 
+            
+            </iframe>
+                 </div>
+              <p>Genre:</p>
+              <br/>
                     {details.genres?.map((item) => (
         <Genres genres={item.name} key={item.id} id={item.id}/>
       ))}
                
               
-              {/* <div>
-              <video width="320" height="240" controls={true}>
-  <source src={`https://www.youtube.com/watch?v=${trailer}`} type="video/mp4" />
-  
-  Your browser does not support the video tag.
-</video>
-            
-            </div> */}
+             
             </div>
             
             </>

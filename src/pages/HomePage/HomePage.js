@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../../hooks/useContext';
 import { Footer } from '../../components/Footer/Footer'
 import { Genres } from '../../components/genres/Genres';
 import { MovieContainer } from '../../components/MovieContainer/MovieContainer';
@@ -15,6 +15,7 @@ export function HomePage() {
 const navigate = useNavigate();
 
 
+
 const [genres, setGenres] = useState([]);
 const [movies, setMovies] = useState([]);
 useEffect(() => {
@@ -24,6 +25,7 @@ useEffect(() => {
       setMovies(data.results)
     }
     getMovies()
+
 }, []);
 useEffect(() => {
     const getGenres = async () => {

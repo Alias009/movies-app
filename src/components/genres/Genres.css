@@ -12,7 +12,8 @@
     color: #da4b2a;
     font-size: 2.0rem;
     font-weight: bolder;
-    
+    text-align: center;
+    text-decoration: none;
     
 }
 .category:hover {
