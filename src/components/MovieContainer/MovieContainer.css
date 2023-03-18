@@ -1,9 +1,8 @@
 .section-container-title-button {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    width: 100vw;
-   
-    
+    width: 100vw; 
 }
 
 .section-container-button {
@@ -12,7 +11,7 @@
     border-radius: 8px;
     background-color: transparent;
     border: 2px solid #799a30;
-    margin-left: 30%;
+    /* margin-left: 30%; */
     width: 118px;
     color: #799a30;
     font-size: 1.4rem;
@@ -28,8 +27,10 @@
 /* movies container */
 
 .section-main-container {
-    display: flex;
+     display: flex;
     flex-wrap: wrap;
+    justify-content: center; 
+    width: 100%;
     
 
 }
@@ -40,74 +41,21 @@
     width: 100%;  
     margin-top: 100px;
 }
-.section-main-container-scroll-vertical {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-   
-}
+
  
 
+
+
+
+@media (max-width:900px) {
+    .section-container-title-button {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .section-container-button {
+        margin-left: 0;
+    }
 .movies-container {
-    width: 240px;
-    height: 320px;
-     margin:20px 12px;
-     border-top: 8px;
-     
-    
+    justify-self: center;
 }
-.movies-container-img {
-   width: 240px;
-    height: 300px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-.movies-container-img:hover {
-    width: 240px;
-    height: 300px;
-    border: 2px solid #e5c334;
-}
-.movies-container-name{
-    background-color: #a52a2a;
-    color: bisque;
-    font-weight: bold;
-    font-size: 1.4rem;
-    padding: 8px 4px;
-    margin: -12px 0  8px 4px;
-    border-radius: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 20ch;
-    display: inline-block;
-   
-}
-.like-button {
-    float: right;
-    display:inherit;
-    margin-top: -320px;
-    margin-right: 0;
-    margin-left: 190px;
-    position: absolute;
-    border: none;
-    background-color: #a52a2a;
-    width: 36px;
-    height: 36px;
-    border-radius: 36px;
-    z-index: 2;
-    
-}
-.like-button::before {
-    content: '🤍';
-    font-size: 1.4rem;
-}
-.like-button-clicked {
-    background-color: #C7C7C7;
-    width: 36px;
-    height: 36px;
-    border-radius: 36px;
-}
-.like-button-clicked::before {
-    content: '❤️';
 }

@@ -1,5 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import { ContextProvider } from './hooks/useContext';
+import { ContextProvider } from './context/useContext';
 import { Navbar } from './components/Navbar/Navbar';
 import './App.css';
 import { HomePage } from './pages/HomePage/HomePage';

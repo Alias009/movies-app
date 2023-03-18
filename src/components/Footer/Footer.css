@@ -1,11 +1,11 @@
-#footer {
+.footer {
     background-color: #746792;
     display: flex;
     justify-content: center;
     align-content: center;
     margin-top: 60px;
 }
-#footer-navbar-ul {
+.footer-navbar-ul {
     display: flex;  
        
 }

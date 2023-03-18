@@ -1,47 +1,61 @@
-import React, {useEffect, useState} from 'react'
-import { useLocation } from 'react-router-dom';
-import { MovieContainer } from '../components/MovieContainer/MovieContainer';
-import './Search.css';
-const APP_URL = process.env.REACT_APP_URL;
-const APP_KEY = process.env.REACT_APP_API_KEY;
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { MovieContainer } from "../components/MovieContainer/MovieContainer";
+import { useApi } from "../hooks/useApi";
+import "./Search.css";
 
 export function SeachResults() {
-  const location = useLocation();
-  const query = location.state?.inputValue;
-  // console.log(location.state?.inputValue)
+  const params = useParams();
+  const { searchMovies } = useApi();
 
- 
+  //states
   const [movies, setMovies] = useState([]);
-  
+  const [page, setPage] = useState(1); //
 
-  const searchMovies = async () => {
-    const response = await fetch(`${APP_URL}/search/movie?api_key=${APP_KEY}&query=${query}&language=${navigator.language}`)
-    const data = await response.json();
-  setMovies(data.results);
-  // console.log(movies, ' results')
-}
+  //this function ia call only ones
+  //first page of results
+  async function getMovies() {
+    const reply = await searchMovies(params.query);
+    setMovies(reply.data);
+  }
+  //this function add the "infinite scroll" when scrolling down
+  async function paginatedResult(p) {
+    const paginated = await searchMovies(params.query, p);
+    setMovies([...movies, ...paginated.data]);
+  }
 
-useEffect(() => {
-    searchMovies();
-}, []);
+  useEffect(() => {
+    getMovies();
+  }, []);
 
+  useEffect(() => {
+    const handleScroll = (event) => {
+      const { clientHeight, scrollTop, scrollHeight } =
+        document.documentElement;
+      const isScrollDown = clientHeight + scrollTop >= scrollHeight - 100;
 
-console.log(movies)
+      if (isScrollDown) {
+        paginatedResult(page);
+        setPage(page + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [page]);
+
   return (
     <>
-    
-    <div className="categories-container-title">
-                 <h2 className="categories-title">Results of {query}</h2> 
-                </div>
-                
-                <div className="movies-by-trends-container-img">
+      <div className="categories-container-title">
+        <h2 className="categories-title">Results of {params.query}</h2>
+      </div>
 
-         
-                        <MovieContainer movies={movies}/>
-                
-   
-                </div>
+      <div className="movies-by-trends-container-img">
+        <MovieContainer movies={movies} />
+      </div>
     </>
-  )
+  );
 }

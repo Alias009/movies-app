@@ -4,10 +4,10 @@ import './Footer.css'
 export function Footer() {
   return (
     <>
-        <footer id="footer">
-        <nav id="footer-navbar">
-            <ul id="footer-navbar-ul">
-                <li className="footer-navbar-li"><a href="https://github.com/jcortes009/movies-app"><img class="footer-navbar-logo" src={GitHubIcon} alt="github"/></a></li>
+        <footer className="footer">
+        <nav className="footer-navbar">
+            <ul className="footer-navbar-ul">
+                <li className="footer-navbar-li"><a href="https://github.com/jcortes009/movies-app"><img className="footer-navbar-logo" src={GitHubIcon} alt="github"/></a></li>
             </ul>
         </nav>
     </footer>
