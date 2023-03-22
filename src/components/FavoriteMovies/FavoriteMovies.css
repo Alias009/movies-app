@@ -1,0 +1,30 @@
+.favorites {
+    background-color: #a52a2a;
+    color: bisque;
+    margin-right: 48px;
+    margin-top: 8px;
+    padding: 0 8px;
+    width: auto;
+    height: 34px;
+    font-size: 2.0rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: solid 2px #a52a2a;
+    text-decoration: none;
+    
+}
+.favorites::before {
+    content: 'Favorites';
+
+}
+.favorites:hover {
+    border: solid 2px #a52a2a;
+    background-color: #a52a2a;
+    color: bisque;
+}
+@media (max-width:600px) {
+    .favorites::before {
+        content: '❤️';
+    
+    }
+}

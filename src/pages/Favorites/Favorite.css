@@ -1,5 +1,20 @@
-
-a.category {
+.favorite-movies {
+    padding: 16px;
+    margin: 70px 28px 28px;
+}
+.empty {
+    background: transparent;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    text-align: center;
+}
+.empty h3 {
+    font-size: 2.4rem;
+    color: whitesmoke;
+}
+button.back {
     position: relative;
     background-color: transparent;
     width: 200px;
@@ -18,11 +33,11 @@ a.category {
     transition: 0.5s;
     
 }
-a.category:hover {
+button.back:hover {
     border: 2px solid whitesmoke;
     color: whitesmoke;
 }
- a.category::before {
+ button.back::before {
     content: '';
     position: absolute;
     inset: 0 8px;
@@ -30,7 +45,7 @@ a.category:hover {
     border-right: 2px solid #da4b2a;
     transition: 1s;
  }
- a.category::after {
+ button.back::after {
     content: '';
     position: absolute;
     inset: 8px 0;

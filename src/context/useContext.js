@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-// import { useState } from 'react-router-dom';
-import { useLocalStorage } from './useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 
 const Context = React.createContext();
 
 function ContextProvider({ children }) {
-    // const [likedMovie, setLikedMovie] = useState(false);
+
     const { items, addMovie, removeMovie } = useLocalStorage('LikedMovies_V2');
-    // const { iLikeMovie, likedMoviesList, getFavoritesMovieList } = useLocalStorage2('LikedMovies_V3');
+
 
     // const lazyLoading = () => {}
     const isOnFavorites = (movieId) => {

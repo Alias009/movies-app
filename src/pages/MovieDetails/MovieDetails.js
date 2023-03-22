@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
 import { Genres } from "../../components/genres/Genres";
 import { useApi } from "../../hooks/useApi";
+import { LikeButton } from "../../components/LikeButton/LikeButton";
+import { useStorage } from "../../context/useContext";
 import "./MovieDetails.css";
 
 
 
 export function MovieDetails() {
+  const { isOnFavorites, addMovie, removeMovie } = useStorage()
   //params from the url
   const params = useParams();
   const id = params.movie;
@@ -47,13 +50,24 @@ export function MovieDetails() {
     similarMovies();
   }, [id]);
 
-
+const isFavorite = isOnFavorites(details.id)
   return (
     <section className="section-details">
       {
         <div className="section-details-container">
           <h2 className="section-details-title">{details?.original_title}</h2>
           <div className="movie-detail">
+          {isFavorite ? <LikeButton 
+          like='movie-liked-button'
+          handleEvent={() => {
+removeMovie(details?.id)
+          }}
+          /> :
+          <LikeButton
+          like='movie-like-button'
+          handleEvent={() => addMovie({id: details?.id, title: details?.original_title, poster_path: details?.poster_path})}
+          />
+          }
             <img
               src={`https://image.tmdb.org/t/p/original/${details.poster_path}`}
               alt="movie title"

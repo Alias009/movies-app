@@ -46,6 +46,7 @@
     border-radius: 36px;
     z-index: 2;
     cursor: pointer;
+    box-shadow: -4px 5px 10px #4a4242;
 
 }
 .liked-button {
@@ -62,6 +63,7 @@
     border-radius: 36px;
     z-index: 2;
     cursor: pointer;
+    box-shadow: -4px 5px 10px #4a4242;
 
 }
 

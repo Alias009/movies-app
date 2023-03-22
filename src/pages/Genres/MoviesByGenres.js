@@ -18,20 +18,12 @@ export function MoviesByGenres() {
   const genreID = params.id.split("-")[0]; //get the genre code
   const genreName = params.id.split("-")[1];//get the genre name
 
-//calls to api
-  async function moviesByGenre() {
-    const reply = await getMoviesBygenre(genreID);
-    setMovies(reply.data);
-  }
-
+//call to api
   async function getMoviesBygenrePagination (p) {
     const reply = await getMoviesBygenre(genreID, p);
     setMovies([...movies, ...reply.data]);
   };
 
-  useEffect(() => {
-    moviesByGenre();
-  }, []);
 
 
   //this will add the "infine scroll"

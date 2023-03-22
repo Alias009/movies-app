@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FavoriteMovies } from "../FavoriteMovies/FavoriteMovies";
 import Logo from "../../img/movie-logo.png";
 import SearchBarImg from "../../img/search-icon-color.png";
 import './Navbar.css'
@@ -17,6 +18,7 @@ const handleChange = (event) => {
 }
 const handleSubmit = () => {
  navigate('/search/' + inputValue, { state: { inputValue }});
+ setInputValue('');
 }
   return (
     <header>
@@ -28,9 +30,9 @@ const handleSubmit = () => {
         src={Logo} 
         alt="logo"
         />
-    
     </nav>
     
+     
     <section className="header-right" >
     
         {/* <!-- <select name="languages" className="lang">
@@ -59,9 +61,10 @@ const handleSubmit = () => {
                     </button>                  
             
             </form>
+           
             
+    <FavoriteMovies/>
     </section>
-    
     
     
     </header>

@@ -8,7 +8,8 @@ html {
   
 }
 body {
-  background-color: #17081b;
+  /* background-color: #17081b; */
+  background: linear-gradient(45deg, #17081b, #352d37);
   font-family: 'Oswald', sans-serif;
 }
 h1 {

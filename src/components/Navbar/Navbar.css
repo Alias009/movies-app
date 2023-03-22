@@ -1,7 +1,6 @@
 header {
     position: fixed;
     display: flex;
-    align-content: center;
     justify-content: space-between;
     background-image: url('../../img/movies.jpg');
     background-repeat: no-repeat;
@@ -14,6 +13,10 @@ header {
 }
 .header-right {
 position: relative;
+display: flex;
+justify-content: space-between;
+
+
 }
 input::placeholder {
     color: whitesmoke;
@@ -24,7 +27,7 @@ input::placeholder {
     align-content: center;
     justify-content: center;
     background-color: #746792;
-    margin: 10px 48px 20px 0;
+    margin: 8px 48px 8px 0;
     border-radius: 8px;
     border: 2px solid #746792;
 }
@@ -60,4 +63,19 @@ input::placeholder {
 .logo {
     width: 100px;
     cursor: pointer;
+}
+
+@media (max-width:600px) {
+    .header-left {
+        
+        margin: 10px 0 20px 4px;
+    }
+    .header-search-form {
+        width: 150px;
+        margin: 8px 8px 8px 0;
+    }
+    .header-search-input {
+
+        width: 100px;
+    }
 }
