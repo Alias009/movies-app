@@ -1,6 +1,5 @@
 import React from 'react';
 import { MovieDetail } from '../MovieDetail/MovieDetail';
-import { Skeleton } from '../Skeleton/Skeleton';
 import './MovieContainer.css';
 
 

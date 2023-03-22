@@ -1,0 +1,82 @@
+.movies-container {
+    width: 240px;
+    height: 320px;
+     margin:20px 12px;
+     border-top: 8px;
+     position: relative;
+    
+}
+.movies-container-img {
+   width: 240px;
+    height: 300px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.movies-container-img:hover {
+    width: 240px;
+    height: 300px;
+    border: 2px solid #e5c334;
+}
+.movies-container-name{
+    background-color: #a52a2a;
+    color: bisque;
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding: 8px 4px;
+    margin: -12px 0  8px 4px;
+    border-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20ch;
+    display: inline-block;
+   
+}
+.like-button {
+    float: right;
+    display: inherit;
+    content: '❤️';
+    top: 20px;
+    right: 20px;
+    position: absolute;
+    border: none;
+    background-color: #a52a2a;
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    z-index: 2;
+    cursor: pointer;
+
+}
+.liked-button {
+    float: right;
+    display: inherit;
+    content: '🤍';
+    top: 20px;
+    right: 20px;
+    position: absolute;
+    border: none;
+    background-color: #dccbcb;
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    z-index: 2;
+    cursor: pointer;
+
+}
+
+.like-button::before {
+    content: '🤍';
+    font-size: 1.4rem;
+}
+
+.like-button-clicked {
+    background-color: #C7C7C7;
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+}
+
+.liked-button::before {
+    content: '❤️';
+}
