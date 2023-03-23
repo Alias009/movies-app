@@ -1,29 +1,4 @@
-.section-container-title-button {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100vw; 
-}
 
-.section-container-button {
-    width: 40px;
-    padding: 12px 8px;
-    border-radius: 8px;
-    background-color: transparent;
-    border: 2px solid #799a30;
-    /* margin-left: 30%; */
-    width: 118px;
-    color: #799a30;
-    font-size: 1.4rem;
-    position: relative;
-    cursor: pointer;
-}
-.section-container-button:hover {
-    background-color: #799a30;
-    border: 2px solid whitesmoke;
-    color: whitesmoke;
-
-}
 /* movies container */
 
 .section-main-container {
@@ -34,13 +9,7 @@
     
 
 }
-.section-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;  
-    margin-top: 100px;
-}
+
 
  
 
@@ -48,13 +17,7 @@
 
 
 @media (max-width:900px) {
-    .section-container-title-button {
-        flex-direction: column;
-        margin-bottom: 30px;
-    }
-    .section-container-button {
-        margin-left: 0;
-    }
+ 
 .movies-container {
     justify-self: center;
 }

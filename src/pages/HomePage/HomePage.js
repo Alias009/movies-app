@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
 import { Genres } from "../../components/genres/Genres";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
-import "./HomePage.css";
 import { useApi } from "../../hooks/useApi";
+import "./HomePage.css";
 
 export function HomePage() {
   const { getTrendingMovies, getMovieGenres } = useApi();
@@ -31,10 +31,10 @@ export function HomePage() {
   return (
     <>
       <section className="section-container">
-        <div className="section-container-title-button">
+        <div className="section-container-button">
           <h1>Trending Movies</h1>
           <button
-            className="section-container-button"
+            className="discover-button"
             onClick={() => navigate("/all-movies")}
           >
             Discover more!

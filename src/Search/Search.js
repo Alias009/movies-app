@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieContainer } from "../components/MovieContainer/MovieContainer";
 import { useApi } from "../hooks/useApi";
+import { useLazyLoading } from "../hooks/useLazyLoading";
 import "./Search.css";
 
 export function SeachResults() {
+  
+  //hooks
   const params = useParams();
   const { searchMovies } = useApi();
+  
 
   //states
   const [movies, setMovies] = useState([]);
@@ -24,10 +28,18 @@ export function SeachResults() {
     setMovies([...movies, ...paginated.data]);
   }
 
+  //hook lazy loading
+  const { observe } = useLazyLoading(paginatedResult);
+  const lastElement = useRef(null);
+
+
+//first result of search
   useEffect(() => {
     getMovies();
   }, []);
 
+
+  //paginated results
   useEffect(() => {
     const handleScroll = (event) => {
       const { clientHeight, scrollTop, scrollHeight } =
@@ -47,13 +59,21 @@ export function SeachResults() {
     };
   }, [page]);
 
+
+  //lazy loading
+  useEffect(() => {
+if(lastElement.current) {
+  observe(lastElement.current);
+}
+  }, [movies]);
+
   return (
     <>
-      <div className="categories-container-title">
-        <h2 className="categories-title">Results of {params.query}</h2>
+      <div className="search-container-title">
+        <h2 className="search-movies-title">Results of {params.query}</h2>
       </div>
 
-      <div className="movies-by-trends-container-img">
+      <div className="search-movies">
         <MovieContainer movies={movies} />
       </div>
     </>

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
 import { useApi } from "../../hooks/useApi";
+import { useLazyLoading } from "../../hooks/useLazyLoading";
 import "./MoviesByGenre.css";
 
 export function MoviesByGenres() {
@@ -9,21 +10,24 @@ export function MoviesByGenres() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1); 
 
-  //hook 
+  //hooks 
+  const params = useParams(); //get params from url
   const { getMoviesBygenre } = useApi();
 
-  //get params from url
-  const params = useParams();
-
+  
   const genreID = params.id.split("-")[0]; //get the genre code
   const genreName = params.id.split("-")[1];//get the genre name
 
-//call to api
+
+//calls to api
   async function getMoviesBygenrePagination (p) {
     const reply = await getMoviesBygenre(genreID, p);
     setMovies([...movies, ...reply.data]);
   };
 
+  //lazyloading
+  const { observer } = useLazyLoading(getMoviesBygenre);
+  const lastElement = useRef(null);
 
 
   //this will add the "infine scroll"
@@ -44,6 +48,13 @@ export function MoviesByGenres() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [page]);
+
+useEffect(() => {
+  
+  if(lastElement.current) {
+    observer.observe(lastElement.current);
+  }
+}, [movies])
 
   return (
     <>

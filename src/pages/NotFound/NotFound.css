@@ -1,20 +1,29 @@
-.favorite-movies {
+.not-found-container {
     padding: 16px;
     margin: 70px 28px 28px;
 }
-.empty {
+.not-found {
     background: transparent;
     margin: 0 auto;
-    /* width: 100vw; */
     height: 100vh;
     display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
     text-align: center;
 }
-.empty h3 {
+.not-found h3 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
     font-size: 2.4rem;
     color: whitesmoke;
 }
-button.back {
+.not-found-image{
+    background: blue;
+    margin-top: 60px;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+button.not-found-button {
     position: relative;
     background-color: transparent;
     width: 200px;
@@ -33,11 +42,11 @@ button.back {
     transition: 0.5s;
     
 }
-button.back:hover {
+button.not-found-button:hover {
     border: transparent;
     color: whitesmoke;
 }
- button.back::before {
+ button.not-found-button::before {
     content: '';
     position: absolute;
     inset: 0 8px;
@@ -45,7 +54,7 @@ button.back:hover {
     border-right: 2px solid #da4b2a;
     transition: 1s;
  }
- button.back::after {
+ button.not-found-button::after {
     content: '';
     position: absolute;
     inset: 8px 0;
@@ -53,11 +62,11 @@ button.back:hover {
     border-bottom: 2px solid #da4b2a;
     transition: 1s;
  }
- button.back:hover::before{
+ button.not-found-button:hover::before{
     inset: 0 0;
     transform: rotate(-10deg);
  }
- button.back:hover::after{
+ button.not-found-button:hover::after{
     inset: 0 -4px;
     transform: rotate(5deg);
  }

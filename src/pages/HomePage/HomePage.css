@@ -1,9 +1,5 @@
 
 
-.favorite-movies-title  {
-    display: grid;
-    
-}
 .genres {
     display: grid;
 
@@ -23,8 +19,84 @@
     height: auto;
 
 }
-.movies-by-trends-container-img {
+
+.section-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;  
+    margin-top: 100px;
+}
+
+.section-container-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw; 
+}
+
+
+
+button.discover-button {
+    position: relative;
+    background-color: transparent;
+    width: 200px;
+    justify-self: center;
+    padding: 8px;
+    border-radius: 12px;
+    margin: 20px 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    height: 48px;
+    color: #799a30;
+    font-size: 2.0rem;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.5s;
+    
+}
+button.discover-button:hover {
+    border: transparent;
+    color: whitesmoke;
+}
+ button.discover-button::before {
+    content: '';
+    position: absolute;
+    inset: 0 8px;
+    border-left: 2px solid #799a30;
+    border-right: 2px solid #799a30;
+    transition: 1s;
+ }
+ button.discover-button::after {
+    content: '';
+    position: absolute;
+    inset: 8px 0;
+    border-top: 2px solid #799a30;
+    border-bottom: 2px solid #799a30;
+    transition: 1s;
+ }
+ button.discover-button:hover::before{
+    inset: 0 0;
+    transform: rotate(-10deg);
+ }
+ button.discover-button:hover::after{
+    inset: 0 -4px;
+    transform: rotate(5deg);
+ }
+
+ 
+
+
+
+
+@media (max-width:900px) {
+    .section-container-button {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .section-container-button {
+        margin-left: 0;
+    }
+
 }

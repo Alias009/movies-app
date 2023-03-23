@@ -19,7 +19,7 @@ a.category {
     
 }
 a.category:hover {
-    border: 2px solid whitesmoke;
+    border: transparent;
     color: whitesmoke;
 }
  a.category::before {
@@ -37,4 +37,12 @@ a.category:hover {
     border-top: 2px solid #da4b2a;
     border-bottom: 2px solid #da4b2a;
     transition: 1s;
+ }
+ a.category:hover::before{
+    inset: 0 0;
+    transform: rotate(-10deg);
+ }
+ a.category:hover::after{
+    inset: 0 -4px;
+    transform: rotate(5deg);
  }

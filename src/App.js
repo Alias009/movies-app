@@ -7,6 +7,7 @@ import { AllMovies } from './pages/AllMovies/AllMovies';
 import { MovieDetails } from './pages/MovieDetails/MovieDetails';
 import { SeachResults } from './Search/Search';
 import { Favorites } from './pages/Favorites/Favorites';
+import { NotFound } from './pages/NotFound/NotFound';
 import './App.css';
 
 
@@ -26,6 +27,7 @@ function App() {
       <Route path='/details/:movie' element={<MovieDetails/>}/>
       <Route path='/search/:query' element={<SeachResults/>}/>
       <Route path='/favorites' element={<Favorites/>}/>
+      <Route path='/*' element={<NotFound/>}/>
     </Routes>
    </ContextProvider>
   </HashRouter>

@@ -1,0 +1,11 @@
+.search-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.search-movies-title{
+    text-transform: capitalize;
+}
+.search-container-title{
+    margin-top: 90px;
+}

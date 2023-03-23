@@ -5,11 +5,13 @@ import { useStorage } from '../../context/useContext';
 import './Favorite.css';
 
 export function Favorites() {
+
+  //hooks
   const navigate = useNavigate();
     const { favorites } = useStorage()
     // console.log(favorites)
     const handleClick = () => {
-       navigate('/')
+       navigate('/');
     }
   return (
     <div className='favorite-movies'>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useApi } from "../../hooks/useApi";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
+import { useLazyLoading } from "../../hooks/useLazyLoading";
 import "./AllMovies.css";
 
 
@@ -8,8 +9,14 @@ export function AllMovies() {
   //states
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
-  //hook
+
+  
+  //hooks
   const { getTrendingMovies } = useApi();
+    //lazy loading
+const { observe } = useLazyLoading(trendingPaginatedMovies);
+const lastElement = useRef(null);
+
 
   //api calls
   async function getMovies() {
@@ -21,11 +28,15 @@ export function AllMovies() {
     const reply = await getTrendingMovies(p);
     setMovies([...movies, ...reply.data]);
   }
+ 
 
+//initial result
   useEffect(() => {
     getMovies();
   }, []);
 
+
+  //event scroll for paginated results
   useEffect(() => {
     const handleScroll = (event) => {
       const { clientHeight, scrollTop, scrollHeight } =
@@ -44,6 +55,14 @@ export function AllMovies() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [page]);
+
+
+  //lazy loading
+  useEffect(() => {
+    if(lastElement.current) {
+      observe.observe(lastElement.current);
+    }
+  }, [movies]);
 
   return (
     <>
