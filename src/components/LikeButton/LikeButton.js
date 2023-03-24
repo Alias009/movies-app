@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function LikeButton({  handleEvent, like }) {
+ export function LikeButton({  handleEvent, like }) {
   return (
     <>
 
@@ -13,5 +13,3 @@ function LikeButton({  handleEvent, like }) {
     </>
   )
 }
-
-export { LikeButton };

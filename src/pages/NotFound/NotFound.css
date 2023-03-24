@@ -18,7 +18,10 @@
     color: whitesmoke;
 }
 .not-found-image{
-    background: blue;
+    background: url('../../img/404_bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     margin-top: 60px;
     grid-column: 1 / 3;
     grid-row: 1 / 3;

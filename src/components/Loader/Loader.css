@@ -1,0 +1,8 @@
+.loader-container {
+    display: grid;
+    width: 100%; 
+    height: auto;
+    margin-top: 120px;
+    padding-top: 50px;
+    justify-content: center;
+}

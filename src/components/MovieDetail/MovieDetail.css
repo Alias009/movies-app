@@ -14,9 +14,8 @@
     cursor: pointer;
 }
 .movies-container-img:hover {
-    width: 240px;
-    height: 300px;
-    border: 2px solid #e5c334;
+    /* scale: 1.1; */
+    border: 1px solid #e5c334;
 }
 .movies-container-name{
     background-color: #a52a2a;

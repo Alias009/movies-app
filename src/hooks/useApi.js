@@ -48,7 +48,7 @@ export function useApi() {
       `${APP_URL}/movie/${id}/videos?api_key=${APP_KEY}&language=${navigator.language}`
     );
     const data = await response.json();
-    return { data: data?.results[0].key };
+    return { data: data.results[0].key };
   };
 
   const getSimilarMovies = async (id) => {

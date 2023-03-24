@@ -5,44 +5,45 @@ import { Genres } from "../../components/genres/Genres";
 import { useApi } from "../../hooks/useApi";
 import { LikeButton } from "../../components/LikeButton/LikeButton";
 import { useStorage } from "../../context/useContext";
+import { Loader } from "../../components/Loader/Loader";
 import "./MovieDetails.css";
 
-
-
 export function MovieDetails() {
-  const { isOnFavorites, addMovie, removeMovie } = useStorage()
-  //params from the url
-  const params = useParams();
-  const id = params.movie;
-
   //states
   const [movies, setMovies] = useState([]);
   const [details, setDetails] = useState([]);
   const [trailer, setTrailer] = useState([]);
 
-  //hooks
+   //hooks
   const { getMovieDetails, getMovieTrailer, getSimilarMovies } = useApi();
+  const { isOnFavorites, addMovie, removeMovie } = useStorage();
+
+  //default trailer in case the original trailer is not available
+  const defaultTrailer = "aqz-KE-bpKQ";
+
+  //params from the url
+  const params = useParams();
+  const id = params.movie;
+
+  
+ 
 
   //api calls
-  async function getDetails() {
-    const reply = await getMovieDetails(id);
-    setDetails(reply.data);
-
-    
-    window.scrollTo({ top: 0, behavior: 'smooth'})
-  }
-  
   async function getTrailer() {
     const reply = await getMovieTrailer(id);
     setTrailer(reply.data);
   }
-  
+  async function getDetails() {
+    const reply = await getMovieDetails(id);
+    setDetails(reply.data);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   async function similarMovies() {
     const reply = await getSimilarMovies(id);
     setMovies(reply.data);
   }
-
-
 
   useEffect(() => {
     getDetails();
@@ -50,24 +51,36 @@ export function MovieDetails() {
     similarMovies();
   }, [id]);
 
-const isFavorite = isOnFavorites(details.id)
+  if (details.length === 0) {
+    return <Loader />;
+  }
+
+  const isFavorite = isOnFavorites(details.id);
   return (
     <section className="section-details">
       {
         <div className="section-details-container">
           <h2 className="section-details-title">{details?.original_title}</h2>
           <div className="movie-detail">
-          {isFavorite ? <LikeButton 
-          like='movie-liked-button'
-          handleEvent={() => {
-removeMovie(details?.id)
-          }}
-          /> :
-          <LikeButton
-          like='movie-like-button'
-          handleEvent={() => addMovie({id: details?.id, title: details?.original_title, poster_path: details?.poster_path})}
-          />
-          }
+            {isFavorite ? (
+              <LikeButton
+                like="movie-liked-button"
+                handleEvent={() => {
+                  removeMovie(details?.id);
+                }}
+              />
+            ) : (
+              <LikeButton
+                like="movie-like-button"
+                handleEvent={() =>
+                  addMovie({
+                    id: details?.id,
+                    title: details?.original_title,
+                    poster_path: details?.poster_path,
+                  })
+                }
+              />
+            )}
             <img
               src={`https://image.tmdb.org/t/p/original/${details.poster_path}`}
               alt="movie title"
@@ -100,9 +113,11 @@ removeMovie(details?.id)
             </p>
             <br />
             <div className="details-genres">
-              <p>
-                <b>Genres:</b>
-              </p>
+              <div>
+                <p>
+                  <b>Genres:</b>
+                </p>
+              </div>
               <br />
               {details.genres?.map((item) => (
                 <Genres genres={item.name} key={item.id} id={item.id} />
@@ -110,19 +125,38 @@ removeMovie(details?.id)
             </div>
           </div>
           <div className="details-trailer">
-            <h3>Trailer</h3>
-            <br />
-            <iframe
-              controls={true}
-              src={`https://www.youtube.com/embed/${trailer}`}
-            ></iframe>
+            {trailer.length ? (
+              <>
+                <h3>Trailer</h3>
+                <br />
+
+                <iframe
+                  controls={true}
+                  src={`https://www.youtube.com/embed/${trailer}`}
+                />
+              </>
+            ) : (
+              <>
+                <h3>Trailer Not available</h3>
+                <iframe
+                  controls={true}
+                  src={`https://www.youtube.com/embed/${defaultTrailer}`}
+                />
+              </>
+            )}
           </div>
         </div>
       }
       <div className="section-similar-movies">
-        <h3>Similar Movies</h3>
+        {movies.length ? (
+          <>
+            <h3>Similar Movies</h3>
 
-        <MovieContainer movies={movies} />
+            <MovieContainer movies={movies} />
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </section>
   );

@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 import { LikeButton } from '../LikeButton/LikeButton';
 import { useStorage } from '../../context/useContext';
 import './MovieDetail.css';
-import { Skeleton } from '../Skeleton/Skeleton';
+
 
 
 export function MovieDetail({ movie }) {
     const { addMovie, removeMovie, isOnFavorites } = useStorage();
     const isFavorite = isOnFavorites(movie?.id);
-    // console.log(isFavorite)
+    
   return (
     <>
       <div className="movies-container">
           <Link to={`/details/${movie?.id}`}>
-          
+        
           <img
             className="movies-container-img"
             src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}

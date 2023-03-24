@@ -8,32 +8,30 @@ import "./MoviesByGenre.css";
 export function MoviesByGenres() {
   //states
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1); 
+  const [page, setPage] = useState(1);
 
-  //hooks 
+  //hooks
   const params = useParams(); //get params from url
   const { getMoviesBygenre } = useApi();
 
-  
   const genreID = params.id.split("-")[0]; //get the genre code
-  const genreName = params.id.split("-")[1];//get the genre name
+  const genreName = params.id.split("-")[1]; //get the genre name
 
-
-//calls to api
-  async function getMoviesBygenrePagination (p) {
+  //calls to api
+  async function getMoviesBygenrePagination(p) {
     const reply = await getMoviesBygenre(genreID, p);
     setMovies([...movies, ...reply.data]);
-  };
+  }
 
   //lazyloading
   const { observer } = useLazyLoading(getMoviesBygenre);
   const lastElement = useRef(null);
 
-
   //this will add the "infine scroll"
   useEffect(() => {
     const handleScroll = (event) => {
-      const { clientHeight, scrollTop, scrollHeight } = document.documentElement;
+      const { clientHeight, scrollTop, scrollHeight } =
+        document.documentElement;
       const isScrollDown = clientHeight + scrollTop >= scrollHeight - 100;
 
       if (isScrollDown) {
@@ -49,12 +47,11 @@ export function MoviesByGenres() {
     };
   }, [page]);
 
-useEffect(() => {
-  
-  if(lastElement.current) {
-    observer.observe(lastElement.current);
-  }
-}, [movies])
+  useEffect(() => {
+    if (lastElement.current) {
+      observer.observe(lastElement.current);
+    }
+  }, [movies]);
 
   return (
     <>

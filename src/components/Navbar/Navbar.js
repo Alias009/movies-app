@@ -12,6 +12,7 @@ const handleNavigate = () => {
 
   navigate('/');
   setInputValue('');
+  window.scrollTo({ top: 0, behavior: 'smooth'});
 }
 const handleChange = (event) => {
   setInputValue(event.target.value);  

@@ -6,11 +6,9 @@ import { useLazyLoading } from "../hooks/useLazyLoading";
 import "./Search.css";
 
 export function SeachResults() {
-  
   //hooks
   const params = useParams();
   const { searchMovies } = useApi();
-  
 
   //states
   const [movies, setMovies] = useState([]);
@@ -32,12 +30,10 @@ export function SeachResults() {
   const { observe } = useLazyLoading(paginatedResult);
   const lastElement = useRef(null);
 
-
-//first result of search
+  //first result of search
   useEffect(() => {
     getMovies();
   }, []);
-
 
   //paginated results
   useEffect(() => {
@@ -59,12 +55,11 @@ export function SeachResults() {
     };
   }, [page]);
 
-
   //lazy loading
   useEffect(() => {
-if(lastElement.current) {
-  observe(lastElement.current);
-}
+    if (lastElement.current) {
+      observe(lastElement.current);
+    }
   }, [movies]);
 
   return (

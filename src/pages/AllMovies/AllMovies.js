@@ -4,19 +4,16 @@ import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
 import { useLazyLoading } from "../../hooks/useLazyLoading";
 import "./AllMovies.css";
 
-
 export function AllMovies() {
   //states
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
-  
   //hooks
   const { getTrendingMovies } = useApi();
-    //lazy loading
-const { observe } = useLazyLoading(trendingPaginatedMovies);
-const lastElement = useRef(null);
-
+  //lazy loading
+  const { observe } = useLazyLoading(trendingPaginatedMovies);
+  const lastElement = useRef(null);
 
   //api calls
   async function getMovies() {
@@ -28,13 +25,11 @@ const lastElement = useRef(null);
     const reply = await getTrendingMovies(p);
     setMovies([...movies, ...reply.data]);
   }
- 
 
-//initial result
+  //initial result
   useEffect(() => {
     getMovies();
   }, []);
-
 
   //event scroll for paginated results
   useEffect(() => {
@@ -56,10 +51,9 @@ const lastElement = useRef(null);
     };
   }, [page]);
 
-
   //lazy loading
   useEffect(() => {
-    if(lastElement.current) {
+    if (lastElement.current) {
       observe.observe(lastElement.current);
     }
   }, [movies]);
