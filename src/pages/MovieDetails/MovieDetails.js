@@ -60,7 +60,7 @@ export function MovieDetails() {
     <section className="section-details">
       {
         <div className="section-details-container">
-          <h2 className="section-details-title">{details?.original_title}</h2>
+          <h1 className="section-details-title">{details?.original_title}</h1>
           <div className="movie-detail">
             {isFavorite ? (
               <LikeButton

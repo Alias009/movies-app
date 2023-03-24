@@ -1,6 +1,7 @@
 
 
-.categories-container-title {
+.categories-container-title h2{
     padding: 16px 16px 16px 0;
-    margin: 70px 28px 28px 0;
+    margin: 70px 28px ;
+    font-size: 3.0rem;
 }

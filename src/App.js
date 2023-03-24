@@ -5,7 +5,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { MoviesByGenres } from './pages/Genres/MoviesByGenres'
 import { AllMovies } from './pages/AllMovies/AllMovies';
 import { MovieDetails } from './pages/MovieDetails/MovieDetails';
-import { SeachResults } from './Search/Search';
+import { SeachResults } from './pages/Search/Search';
 import { Favorites } from './pages/Favorites/Favorites';
 import { NotFound } from './pages/NotFound/NotFound';
 import './App.css';

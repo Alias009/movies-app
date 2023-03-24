@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MovieContainer } from "../components/MovieContainer/MovieContainer";
-import { useApi } from "../hooks/useApi";
-import { useLazyLoading } from "../hooks/useLazyLoading";
+import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
+import { useApi } from "../../hooks/useApi";
+import { useLazyLoading } from "../../hooks/useLazyLoading";
 import "./Search.css";
 
 export function SeachResults() {

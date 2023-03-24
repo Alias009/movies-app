@@ -17,7 +17,7 @@ export function Favorites() {
     <div className='favorite-movies'>
     {favorites <= 0 ?
       <div className='empty'>
-        <h3>Your List is empty</h3>
+        <h1>Your List is empty</h1>
        
         <button className='back'
         onClick={handleClick}
