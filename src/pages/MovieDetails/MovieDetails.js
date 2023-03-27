@@ -12,7 +12,7 @@ export function MovieDetails() {
   //states
   const [movies, setMovies] = useState([]);
   const [details, setDetails] = useState([]);
-  const [trailer, setTrailer] = useState('');
+ 
 
    //hooks
   const { getMovieDetails, getSimilarMovies } = useApi();
@@ -27,12 +27,7 @@ export function MovieDetails() {
  
 
   //api calls
-  // async function getTrailer() {
-  //   const reply = await getMovieTrailer(id);
-    
-  //     setTrailer(reply.data);
-    
-  // }
+
   async function getDetails() {
     const reply = await getMovieDetails(id);
     setDetails(reply.data);
@@ -46,7 +41,6 @@ export function MovieDetails() {
   }
 
   useEffect(() => {
-   
     getDetails();
     similarMovies();
   }, [id]);
@@ -55,7 +49,7 @@ export function MovieDetails() {
     return <Loader />;
   }
 
-  console.log(trailer)
+
 
   const isFavorite = isOnFavorites(details.id);
   return (
@@ -126,20 +120,7 @@ export function MovieDetails() {
               ))}
             </div>
           </div>
-          {/* <div className="details-trailer">
-            {
-              <>
-               <h3>Trailer</h3>
-                <br />
-
-                <iframe
-                  controls={true}
-                  src={`https://www.youtube.com/embed/${trailer}`}
-                />
-                
-              </>
-            }
-          </div> */}
+      
         </div>
       }
       <div className="section-similar-movies">
