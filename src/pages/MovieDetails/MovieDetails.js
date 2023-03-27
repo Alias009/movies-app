@@ -12,14 +12,12 @@ export function MovieDetails() {
   //states
   const [movies, setMovies] = useState([]);
   const [details, setDetails] = useState([]);
-  const [trailer, setTrailer] = useState([]);
+  const [trailer, setTrailer] = useState('');
 
    //hooks
-  const { getMovieDetails, getMovieTrailer, getSimilarMovies } = useApi();
+  const { getMovieDetails, getSimilarMovies } = useApi();
   const { isOnFavorites, addMovie, removeMovie } = useStorage();
 
-  //default trailer in case the original trailer is not available
-  const defaultTrailer = "aqz-KE-bpKQ";
 
   //params from the url
   const params = useParams();
@@ -29,10 +27,12 @@ export function MovieDetails() {
  
 
   //api calls
-  async function getTrailer() {
-    const reply = await getMovieTrailer(id);
-    setTrailer(reply.data);
-  }
+  // async function getTrailer() {
+  //   const reply = await getMovieTrailer(id);
+    
+  //     setTrailer(reply.data);
+    
+  // }
   async function getDetails() {
     const reply = await getMovieDetails(id);
     setDetails(reply.data);
@@ -46,14 +46,16 @@ export function MovieDetails() {
   }
 
   useEffect(() => {
+   
     getDetails();
-    getTrailer();
     similarMovies();
   }, [id]);
 
   if (details.length === 0) {
     return <Loader />;
   }
+
+  console.log(trailer)
 
   const isFavorite = isOnFavorites(details.id);
   return (
@@ -124,27 +126,20 @@ export function MovieDetails() {
               ))}
             </div>
           </div>
-          <div className="details-trailer">
-            {trailer.length ? (
+          {/* <div className="details-trailer">
+            {
               <>
-                <h3>Trailer</h3>
+               <h3>Trailer</h3>
                 <br />
 
                 <iframe
                   controls={true}
                   src={`https://www.youtube.com/embed/${trailer}`}
                 />
+                
               </>
-            ) : (
-              <>
-                <h3>Trailer Not available</h3>
-                <iframe
-                  controls={true}
-                  src={`https://www.youtube.com/embed/${defaultTrailer}`}
-                />
-              </>
-            )}
-          </div>
+            }
+          </div> */}
         </div>
       }
       <div className="section-similar-movies">
