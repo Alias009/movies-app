@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
-import { Genres } from "../../components/genres/Genres";
+import { Genres } from "../../components/Genres/Genres";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
 
 import { useApi } from "../../hooks/useApi";

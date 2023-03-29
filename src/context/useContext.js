@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 
@@ -9,7 +9,6 @@ function ContextProvider({ children }) {
     const { items, addMovie, removeMovie } = useLocalStorage('LikedMovies_V2');
 
 
-    // const lazyLoading = () => {}
     const isOnFavorites = (movieId) => {
         return Array.isArray(items) && items.some((item) => item.id === movieId);
     }
