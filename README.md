@@ -1,13 +1,24 @@
-# movies-app  [View Demo](https://jcortes009.github.io/movies-app/)
-JavaScript SPA for movies information. <br>
+# movies-app  
+This repository contains a web application that provides movie information and allows searching by keywords, genres, and trending movies using vanilla JavaScript and DOM manipulation.
 
-Using axios  this is a single page app with responsive design. Has a interartive navigation using by changing the location.
-Home page show the trending movies at the current day, by clicking the image of every movie there is a small window that show some details with a button that leads to the home page of each movie.
+# Getting Started
+To get started with this project, follow these steps:
 
-There is  like button that will save you favorite movies in the local storage, the same button  can be use to remove the movie from it.
+1. Clone this repository to your local machine using git clone `https://github.com/jp-cortes/movies-app.git`
+2. Navigate to the project directory: cd movies-app
+3. Open the index.html file in your web browser
 
-By clicking  in every genres will for movies by genre paginated that simulates infinite scroll.
+# Implementation Details
+The movie information web application is built using vanilla JavaScript and DOM manipulation.
 
-is also posible to serch movies by  an specific word
+# Searching by Keywords
+The user can search for movies by entering keywords in the search bar at the top of the page. The JavaScript code for handling the search functionality is contained in the main.js file. When the user submits a search query, the application makes a request to the TMDB API to retrieve information about the movies that match the query. The response data is then displayed on the page using DOM manipulation.
 
-This is a HTML, CSS and javascript DOM manipulation project. 
+# Searching by Genres
+The user can search for movies by selecting a genre from the dropdown menu at the top of the page. The JavaScript code for handling the genre search functionality is contained in the main.js file. When the user selects a genre from the dropdown menu, the application makes a request to the TMDB API to retrieve information about the movies in that genre. The response data is then displayed on the page using DOM manipulation.
+
+# Trending Movies
+The user can view a list of trending movies by clicking on the "Trending" button in the navigation bar at the top of the page. The JavaScript code for handling the trending movies functionality is contained in the main.js file. When the user clicks the "Trending" button, the application makes a request to the OMDb API to retrieve information about the movies that are currently trending. The response data is then displayed on the page using DOM manipulation.
+
+# Emulated Navigation using Window Location Hash
+The application uses the window location hash to emulate navigation between the different search and trending results. functionality is contained in the navigation.js file. When the user submits a search query, selects a genre, or clicks the "View More" button, the application updates the window location hash to reflect the current state of the application. This allows the user to navigate back and forward using the browser's back and forward buttons, and also allows the user to bookmark or share a specific search or trending result.
