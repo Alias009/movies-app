@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useApi } from "../../hooks/useApi";
+import { useApi } from "../../services/useApi";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
 import { useLazyLoading } from "../../hooks/useLazyLoading";
 import "./AllMovies.css";
@@ -36,7 +36,7 @@ export function AllMovies() {
     const handleScroll = (event) => {
       const { clientHeight, scrollTop, scrollHeight } =
         document.documentElement;
-      const isScrollDown = clientHeight + scrollTop >= scrollHeight - 100;
+      const isScrollDown = clientHeight + scrollTop >= scrollHeight - 50;
 
       if (isScrollDown) {
         trendingPaginatedMovies(page);

@@ -4,7 +4,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Genres } from "../../components/Genres/Genres";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
 
-import { useApi } from "../../hooks/useApi";
+import { useApi } from "../../services/useApi";
 import "./HomePage.css";
 
 export function HomePage() {

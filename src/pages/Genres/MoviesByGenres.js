@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
-import { useApi } from "../../hooks/useApi";
+import { useApi } from "../../services/useApi";
 import { useLazyLoading } from "../../hooks/useLazyLoading";
 import "./MoviesByGenre.css";
 
@@ -32,7 +32,7 @@ export function MoviesByGenres() {
     const handleScroll = (event) => {
       const { clientHeight, scrollTop, scrollHeight } =
         document.documentElement;
-      const isScrollDown = clientHeight + scrollTop >= scrollHeight - 100;
+      const isScrollDown = clientHeight + scrollTop >= scrollHeight - 50;
 
       if (isScrollDown) {
         getMoviesBygenrePagination(page);

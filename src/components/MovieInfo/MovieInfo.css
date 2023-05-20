@@ -49,7 +49,7 @@
     display: inherit;
     content: '❤️';
     top: 20px;
-    right: 20px;
+    right: 8%;
     position: absolute;
     border: none;
     background-color: #a52a2a;
@@ -65,7 +65,7 @@
     display: inherit;
     content: '🤍';
     top: 20px;
-    right: 20px;
+    right: 8%;
     position: absolute;
     border: none;
     background-color: #dccbcb;
@@ -131,9 +131,9 @@
       justify-self: center;
       padding-top: 10px;
       margin-bottom: -55px;
-      margin-left: 280px;
-      width: 56px;
-      height: 56px;
+      margin-left: 300px;
+      width: 50px;
+      height: 50px;
     
     }
     .movie-like-button::before,
@@ -179,11 +179,11 @@
     .movie-liked-button {
       position: relative;
       justify-self: center;
-      padding-top: 8px;
+      padding-top: 4px;
       margin-bottom: -55px;
-      margin-left: 200px;
-      width: 46px;
-      height: 46px;
+      margin-left: 220px;
+      width: 40px;
+      height: 40px;
     
     }
   }

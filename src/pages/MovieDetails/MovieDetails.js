@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
-import { useApi } from "../../hooks/useApi";
+import { useApi } from "../../services/useApi";
 import { Loader } from "../../components/Loader/Loader";
 import { MovieInfo } from "../../components/MovieInfo/MovieInfo";
 import "./MovieDetails.css";
