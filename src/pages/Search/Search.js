@@ -21,13 +21,13 @@ export function SeachResults() {
     setMovies(reply.data);
   }
   //this function add the "infinite scroll" when scrolling down
-  async function paginatedResult(p) {
+  async function pagination(p=1) {
     const paginated = await searchMovies(params.query, p);
     setMovies([...movies, ...paginated.data]);
   }
 
   //hook lazy loading
-  const { observe } = useLazyLoading(paginatedResult);
+  const { observe } = useLazyLoading(pagination);
   const lastElement = useRef(null);
 
   //first result of search
@@ -43,7 +43,7 @@ export function SeachResults() {
       const isScrollDown = clientHeight + scrollTop >= scrollHeight - 50;
 
       if (isScrollDown) {
-        paginatedResult(page);
+        pagination(page);
         setPage(page + 1);
       }
     };

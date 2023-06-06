@@ -11,20 +11,21 @@ export function AllMovies() {
 
   //hooks
   const { getTrendingMovies } = useApi();
-  //lazy loading
-  const { observe } = useLazyLoading(trendingPaginatedMovies);
-  const lastElement = useRef(null);
-
+  
   //api calls
   async function getMovies() {
     const reply = await getTrendingMovies();
     setMovies(reply.data);
   }
   //paginated results
-  async function trendingPaginatedMovies(p) {
+  async function pagination(p=1) {
     const reply = await getTrendingMovies(p);
     setMovies([...movies, ...reply.data]);
   }
+  
+  //lazy loading
+  const { observe } = useLazyLoading(pagination);
+  const lastElement = useRef(null);
 
   //initial result
   useEffect(() => {
@@ -39,7 +40,7 @@ export function AllMovies() {
       const isScrollDown = clientHeight + scrollTop >= scrollHeight - 50;
 
       if (isScrollDown) {
-        trendingPaginatedMovies(page);
+        pagination(page);
         setPage(page + 1);
       }
     };

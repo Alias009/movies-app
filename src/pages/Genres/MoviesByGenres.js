@@ -18,24 +18,24 @@ export function MoviesByGenres() {
   const genreName = params.id.split("-")[1]; //get the genre name
 
   //calls to api
-  async function getMoviesBygenrePagination(p) {
+  async function pagination(p=1) {
     const reply = await getMoviesBygenre(genreID, p);
     setMovies([...movies, ...reply.data]);
   }
 
   //lazyloading
-  const { observer } = useLazyLoading(getMoviesBygenre);
+  const { observe } = useLazyLoading(getMoviesBygenre);
   const lastElement = useRef(null);
 
   //this will add the "infine scroll"
   useEffect(() => {
-    const handleScroll = (event) => {
+    const handleScroll = () => {
       const { clientHeight, scrollTop, scrollHeight } =
         document.documentElement;
       const isScrollDown = clientHeight + scrollTop >= scrollHeight - 50;
 
       if (isScrollDown) {
-        getMoviesBygenrePagination(page);
+        pagination(page);
         setPage(page + 1);
       }
     };
@@ -49,7 +49,7 @@ export function MoviesByGenres() {
 
   useEffect(() => {
     if (lastElement.current) {
-      observer.observe(lastElement.current);
+      observe(lastElement.current);
     }
   }, [movies]);
 
