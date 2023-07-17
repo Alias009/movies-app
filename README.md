@@ -1,7 +1,10 @@
-# Project Name: Movies app
+# Movies app 2.0
+
 This project is a web application that allows users to browse movies, search for movies by genre or keywords, view brief descriptions of each movie, watch trailers, and see similar movies. Users can also add and remove movies from their local storage.
 
 The project is built using ReactJS and utilizes the API from The Movie Database (TMDb) to fetch movie information.
+
+# [Live demo](https://movies-app-v2.netlify.app/)
 
 # Installation
 1. Clone the repository from Github.
