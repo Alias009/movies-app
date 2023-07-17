@@ -41,6 +41,7 @@ export function MovieDetails() {
   useEffect(() => {
     getDetails();
     similarMovies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   if (details.length === 0) {

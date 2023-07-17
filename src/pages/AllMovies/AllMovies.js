@@ -30,6 +30,7 @@ export function AllMovies() {
   //initial result
   useEffect(() => {
     getMovies();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //event scroll for paginated results
@@ -50,6 +51,7 @@ export function AllMovies() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   //lazy loading
@@ -57,6 +59,7 @@ export function AllMovies() {
     if (lastElement.current) {
       observe.observe(lastElement.current);
     }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies]);
 
   return (

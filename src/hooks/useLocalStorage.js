@@ -5,8 +5,8 @@ export function useLocalStorage(key) {
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(items));
-    }, [items]);
-    const addMovie = (item) => {
+    }, [items, key]);
+    function addMovie(item){
         
         setItems([...items, { ...item }]);
     }

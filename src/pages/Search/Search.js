@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieContainer } from "../../components/MovieContainer/MovieContainer";
@@ -33,6 +34,7 @@ export function SeachResults() {
   //first result of search
   useEffect(() => {
     getMovies();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //paginated results
@@ -53,6 +55,7 @@ export function SeachResults() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   //lazy loading
@@ -60,6 +63,7 @@ export function SeachResults() {
     if (lastElement.current) {
       observe(lastElement.current);
     }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies]);
 
   return (

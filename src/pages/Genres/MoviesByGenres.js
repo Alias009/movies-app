@@ -45,12 +45,14 @@ export function MoviesByGenres() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
     if (lastElement.current) {
       observe(lastElement.current);
     }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies]);
 
   return (

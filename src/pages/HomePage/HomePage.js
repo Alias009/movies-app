@@ -27,6 +27,7 @@ export function HomePage() {
   useEffect(() => {
     getMovies();
     getGenres();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
